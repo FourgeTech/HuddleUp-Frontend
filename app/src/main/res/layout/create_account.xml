@@ -40,7 +40,7 @@
         app:layout_constraintGuide_percent="0.85" />
 
     <TextView
-        android:id="@+id/join_team_title"
+        android:id="@+id/create_team_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -57,7 +57,7 @@
         android:text="Lets Get You Set Up Success"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/join_team_title" />
+        app:layout_constraintTop_toBottomOf="@id/create_team_title" />
 
     <TextView
         android:id="@+id/first_name_title"
