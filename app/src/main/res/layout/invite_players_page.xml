@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/huddleup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|top"
+        android:text="Invite Players"
+        android:textSize="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuidelineTop" />
+
+    <TextView
+        android:id="@+id/motto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal|top"
+        android:text="Its Time to Invite the Star \nPlayers"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/huddleup" />
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/logo_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/motto"
+        app:srcCompat="@drawable/huddleup_logo" />
+
+    <TextView
+        android:id="@+id/share_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal|top"
+        android:text="Nice Work! \nNow, let’s add your team"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo" />
+
+    <Button
+        android:id="@+id/copy_link_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Copy Link"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft"
+         />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalGuidelineBottom"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/logo_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
