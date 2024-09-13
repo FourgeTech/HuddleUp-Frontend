@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CreateAccountActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
@@ -73,7 +75,7 @@
         android:id="@+id/input_first_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Enter your first name"
+        android:hint="Enter your first name"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintTop_toBottomOf="@id/guidelineMiddle" />
@@ -92,7 +94,7 @@
         android:id="@+id/input_last_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Enter your last name"
+        android:hint="Enter your last name"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintTop_toBottomOf="@id/last_name_title" />
@@ -111,7 +113,7 @@
         android:id="@+id/input_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Enter your email"
+        android:hint="Enter your email"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintTop_toBottomOf="@id/email_title" />
@@ -130,7 +132,7 @@
         android:id="@+id/input_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Enter your password"
+        android:hint="Enter your password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
@@ -150,7 +152,7 @@
         android:id="@+id/input_confirm_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Enter your password"
+        android:hint="Enter your password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"

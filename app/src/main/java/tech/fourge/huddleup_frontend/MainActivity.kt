@@ -1,20 +1,22 @@
 package tech.fourge.huddleup_frontend
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import tech.fourge.huddleup_frontend.databinding.WelcomePageBinding
+import tech.fourge.huddleup_frontend.helpers.openIntent
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: WelcomePageBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.welcome_page)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        val binding = WelcomePageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.loginButton.setOnClickListener{
+            openIntent(this,LoginActivity::class.java)
+        }
+        binding.createTeamButton.setOnClickListener{
+            openIntent(this,CreateTeamActivity::class.java)
         }
     }
 }
