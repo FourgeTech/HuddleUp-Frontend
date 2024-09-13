@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/input_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -81,10 +81,10 @@
         android:text="Password:"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toBottomOf="@id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@id/input_email" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/input_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -95,13 +95,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
     \
     <Button
-        android:id="@+id/btnContinue"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log in"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/input_password" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
