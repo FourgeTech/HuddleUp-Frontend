@@ -1,11 +1,7 @@
-package tech.fourge.huddleup_frontend
+package tech.fourge.huddleup_frontend.Ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import tech.fourge.huddleup_frontend.databinding.CreateAccountBinding
 import tech.fourge.huddleup_frontend.databinding.HomePageBinding
 
 class HomeActivity : AppCompatActivity() {

@@ -1,21 +1,21 @@
-package tech.fourge.huddleup_frontend
+package tech.fourge.huddleup_frontend.Ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings.Global
 import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import kotlinx.coroutines.launch
+import tech.fourge.huddleup_frontend.R
+import tech.fourge.huddleup_frontend.Utils.openIntent
 import tech.fourge.huddleup_frontend.databinding.CreateAccountBinding
-import tech.fourge.huddleup_frontend.helpers.FirebaseAuthHelper
+import tech.fourge.huddleup_frontend.tests.UserHelper
 
 
 class CreateAccountActivity : AppCompatActivity() {
@@ -33,8 +33,7 @@ class CreateAccountActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
             } else {
                 // Register the user
-                val authHelper = FirebaseAuthHelper()
-                        authHelper.registerUser(email, password)
+                lifecycleScope.launch { UserHelper().registerUser(email, password) }
                     }
                 }
 
@@ -58,12 +57,12 @@ class CreateAccountActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                val authHelper = FirebaseAuthHelper()
-                authHelper.firebaseAuthWithGoogle(account.idToken!!,this)
+                lifecycleScope.launch { UserHelper().firebaseAuthWithGoogle(account.idToken!!) }
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
             }
         }
+        openIntent(this, HomeActivity::class.java)
     }
 
     companion object {

@@ -1,14 +1,13 @@
-package tech.fourge.huddleup_frontend
+package tech.fourge.huddleup_frontend.Ui
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.databinding.LoginPageBinding
-import tech.fourge.huddleup_frontend.databinding.WelcomePageBinding
-import tech.fourge.huddleup_frontend.helpers.FirebaseAuthHelper
+import tech.fourge.huddleup_frontend.tests.UserHelper
+import tech.fourge.huddleup_frontend.Utils.openIntent
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +22,12 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
             } else {
                 // Sign in the user
-                val authHelper = FirebaseAuthHelper()
-                authHelper.signinUser(email, password, this)
+                lifecycleScope.launch { UserHelper().signIn(email, password) }
             }
+        }
+
+        binding.resetPasswordButton.setOnClickListener{
+            openIntent(this, ForgotPasswordActivity::class.java)
         }
 
     }

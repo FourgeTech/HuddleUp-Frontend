@@ -1,4 +1,4 @@
-package tech.fourge.huddleup_frontend.helpers
+package tech.fourge.huddleup_frontend.Utils
 
 import android.app.Activity
 import android.content.Intent
