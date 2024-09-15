@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.openIntent
 import tech.fourge.huddleup_frontend.databinding.CreateAccountBinding
-import tech.fourge.huddleup_frontend.tests.UserHelper
+import tech.fourge.huddleup_frontend.Helpers.UserHelper
 
 
 class CreateAccountActivity : AppCompatActivity() {
@@ -23,7 +23,6 @@ class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = CreateAccountBinding.inflate(layoutInflater)
-        lateinit var googleSignInClient: GoogleSignInClient
         setContentView(binding.root)
 
         binding.continueButton.setOnClickListener{
@@ -38,35 +37,7 @@ class CreateAccountActivity : AppCompatActivity() {
                 }
 
         binding.continueWithGoogleButton.setOnClickListener{
-            // Configure Google Sign-In
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
-
-            googleSignInClient = GoogleSignIn.getClient(this, gso)
-            val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
+            openIntent(this, GoogleAuthActivity::class.java)
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)!!
-                lifecycleScope.launch { UserHelper().firebaseAuthWithGoogle(account.idToken!!) }
-            } catch (e: ApiException) {
-                Log.w(TAG, "Google sign in failed", e)
-            }
-        }
-        openIntent(this, HomeActivity::class.java)
-    }
-
-    companion object {
-        private const val RC_SIGN_IN = 9001
-        private const val TAG = "MainActivity"
     }
 }

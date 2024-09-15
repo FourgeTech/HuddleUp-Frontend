@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.databinding.LoginPageBinding
-import tech.fourge.huddleup_frontend.tests.UserHelper
+import tech.fourge.huddleup_frontend.Helpers.UserHelper
+import tech.fourge.huddleup_frontend.Utils.ToastUtils
 import tech.fourge.huddleup_frontend.Utils.openIntent
 
 class LoginActivity : AppCompatActivity() {
@@ -16,13 +17,21 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener(){
+
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
+
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
-            } else {
+                Toast.makeText(this, ToastUtils.EMPTY_FIELDS_ERROR, Toast.LENGTH_SHORT).show()
+            }
+            else {
                 // Sign in the user
-                lifecycleScope.launch { UserHelper().signIn(email, password) }
+                lifecycleScope.launch { UserHelper().signIn(email, password) }.invokeOnCompletion { success ->
+                    if (success != null) {
+                        Toast.makeText(this, ToastUtils.SIGN_IN_SUCCESS, Toast.LENGTH_SHORT).show()
+                        openIntent(this, HomeActivity::class.java)
+                    }
+                }
             }
         }
 

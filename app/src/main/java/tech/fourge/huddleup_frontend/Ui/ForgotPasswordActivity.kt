@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.databinding.ForgotPasswordPageBinding
-import tech.fourge.huddleup_frontend.tests.UserHelper
+import tech.fourge.huddleup_frontend.Helpers.UserHelper
 
 class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

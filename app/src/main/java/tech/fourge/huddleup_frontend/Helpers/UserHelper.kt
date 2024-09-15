@@ -1,6 +1,5 @@
-package tech.fourge.huddleup_frontend.tests
+package tech.fourge.huddleup_frontend.Helpers
 
-import android.app.Activity
 import android.util.Log
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -8,8 +7,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 import kotlinx.coroutines.tasks.await
-import tech.fourge.huddleup_frontend.Ui.HomeActivity
-import tech.fourge.huddleup_frontend.Utils.openIntent
 
 
 class UserHelper {
