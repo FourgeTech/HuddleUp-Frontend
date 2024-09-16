@@ -26,13 +26,21 @@ class LoginActivity : AppCompatActivity() {
             }
             else {
                 // Sign in the user
-                lifecycleScope.launch { UserHelper().signIn(email, password) }.invokeOnCompletion { success ->
-                    if (success != null) {
-                        Toast.makeText(this, ToastUtils.SIGN_IN_SUCCESS, Toast.LENGTH_SHORT).show()
-                        openIntent(this, HomeActivity::class.java)
+                lifecycleScope.launch {
+                    val success = UserHelper().signIn(email, password)
+                    if (success) {
+                        Toast.makeText(this@LoginActivity, ToastUtils.SIGN_IN_SUCCESS, Toast.LENGTH_SHORT).show()
+                        openIntent(this@LoginActivity, HomeActivity::class.java)
                     }
                 }
             }
+        }
+
+        binding.continueWithGoogleButton.setOnClickListener {
+            val data = Bundle().apply {
+                putString("action", "login")
+            }
+            openIntent(this, GoogleAuthActivity::class.java,data)
         }
 
         binding.resetPasswordButton.setOnClickListener{

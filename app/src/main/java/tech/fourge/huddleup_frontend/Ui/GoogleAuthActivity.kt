@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
@@ -19,12 +21,18 @@ import com.google.android.gms.common.api.ApiException
 import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.Helpers.UserHelper
 import tech.fourge.huddleup_frontend.R
+import tech.fourge.huddleup_frontend.Utils.ToastUtils
 import tech.fourge.huddleup_frontend.Utils.openIntent
 
 class GoogleAuthActivity : AppCompatActivity() {
     lateinit var googleSignInClient: GoogleSignInClient
+    lateinit var googleSignInAccount: GoogleSignInAccount
+    lateinit var action: String
+
+    // On Create
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        action = intent.getStringExtra("action").toString()
         // Configure Google Sign-In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -38,39 +46,50 @@ class GoogleAuthActivity : AppCompatActivity() {
         }
     }
 
+    // On Activity Result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RC_SIGN_IN) {
+            // Get google account from sign in
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                val account = task.getResult(ApiException::class.java)!!
-                lifecycleScope.launch {
-                    UserHelper().firebaseAuthWithGoogle(account.idToken!!)
-                }.invokeOnCompletion {
-                    Log.w(TAG, "Google sign-in successful.")
-                    openIntent(this, HomeActivity::class.java)
-                }
+                googleSignInAccount = task.getResult(ApiException::class.java)!!
             } catch (e: ApiException) {
-                // Handle different error codes here
                 Log.w(TAG, "Google sign-in failed: ${e.statusCode}", e)
-                when (e.statusCode) {
-                    GoogleSignInStatusCodes.SIGN_IN_CANCELLED -> {
-                        // User canceled the sign-in
-                        Log.w(TAG, "Sign-in was canceled by the user.")
-                    }
+            }
 
-                    GoogleSignInStatusCodes.SIGN_IN_FAILED -> {
-                        // Sign-in failed
-                        Log.w(TAG, "Sign-in failed.")
+            // If action is login then check if user exists with Google account
+            if(action == "login"){
+                lifecycleScope.launch {
+                    if (UserHelper().checkIfUserExistsWithGoogleAccount(googleSignInAccount)) {
+                        // If exists Login
+                        createAccountWithGoogle(googleSignInAccount)
                     }
-
-                    else -> {
-                        // General sign-in error
-                        Log.w(TAG, "Google sign-in error: ${e.statusCode}", e)
+                    else{
+                        Toast.makeText(this@GoogleAuthActivity, ToastUtils.ACCOUNT_DOES_NOT_EXIST_ERROR, Toast.LENGTH_SHORT).show()
+                        openIntent(this@GoogleAuthActivity, LoginActivity::class.java)
                     }
+                }
+            }
+            // If action is register then create account with Google
+            else if(action == "register"){
+                // Create new account with Google
+                lifecycleScope.launch {
+                    createAccountWithGoogle(googleSignInAccount)
                 }
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    // Create account with Google
+    fun createAccountWithGoogle(account: GoogleSignInAccount)
+    {
+        lifecycleScope.launch {
+            val result = UserHelper().firebaseAuthWithGoogle(account.idToken!!)
+            if (result) {
+                openIntent(this@GoogleAuthActivity, HomeActivity::class.java)
+            }
+        }
     }
 
     companion object {

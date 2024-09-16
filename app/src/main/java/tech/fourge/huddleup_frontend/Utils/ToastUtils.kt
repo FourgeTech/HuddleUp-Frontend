@@ -9,4 +9,6 @@ object ToastUtils {
     const val REGISTRATION_SUCCESS = "Registration successful"
     const val SIGN_IN_SUCCESS = "Sign in successful"
     const val SIGN_OUT_SUCCESS = "Sign out successful"
+    const val ACCOUNT_EXISTS_ERROR = "Account already exists"
+    const val ACCOUNT_DOES_NOT_EXIST_ERROR = "Account does not exist"
 }

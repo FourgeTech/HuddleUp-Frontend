@@ -13,7 +13,10 @@ class CreateTeamActivity : AppCompatActivity() {
         val binding = CreateTeamPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnContinue.setOnClickListener{
-            openIntent(this, CreateAccountActivity::class.java)
+            val data = Bundle().apply {
+                putString("role", "member")
+            }
+            openIntent(this, CreateAccountActivity::class.java,data)
         }
     }
 }
