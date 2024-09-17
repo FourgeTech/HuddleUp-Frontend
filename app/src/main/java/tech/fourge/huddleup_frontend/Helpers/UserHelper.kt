@@ -12,9 +12,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.functions
 import kotlinx.coroutines.tasks.await
+import tech.fourge.huddleup_frontend.Models.Settings
 
 
 class UserHelper {
@@ -142,6 +144,48 @@ class UserHelper {
             Log.w(TAG,"unknown_error" , e)
             "Password reset failed"
         }
+    }
+
+    // Create a data class for user settings
+    data class UserSettings(
+        val name: String? = null,
+        val surname: String? = null,
+        val profilePicture: String? = null,
+        val settings : Settings? = null
+    )
+
+    // Function to update user settings
+    fun updateUserSettings(settings: UserSettings, callback: (Result<String>) -> Unit) {
+        val currentUser = getCurrentUser()
+        if (currentUser == null) {
+            callback(Result.failure(Exception("No authenticated user")))
+            return
+        }
+
+        val functions = FirebaseFunctions.getInstance()
+
+        // Map all fields from UserSettings
+        val data = mapOf(
+            "name" to settings.name,
+            "surname" to settings.surname,
+            "profilePicture" to settings.profilePicture,
+            "settings" to settings.settings // Assuming settings is a custom object
+        )
+
+        functions
+            .getHttpsCallable("updateUserSettings")
+            .call(data)
+            .addOnSuccessListener { result ->
+                val success = result.data as? Boolean
+                if (success == true) {
+                    callback(Result.success("Settings updated successfully"))
+                } else {
+                    callback(Result.failure(Exception("Error updating settings")))
+                }
+            }
+            .addOnFailureListener { exception ->
+                callback(Result.failure(exception))
+            }
     }
 
 
