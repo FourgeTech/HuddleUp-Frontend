@@ -12,9 +12,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = WelcomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Open the LoginActivity
         binding.loginButton.setOnClickListener{
             openIntent(this, LoginActivity::class.java)
         }
+
+        // Open the CreateTeamActivity
         binding.createTeamButton.setOnClickListener{
             openIntent(this, CreateTeamActivity::class.java)
         }

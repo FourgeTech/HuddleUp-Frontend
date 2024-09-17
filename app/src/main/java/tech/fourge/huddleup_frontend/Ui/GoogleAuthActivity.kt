@@ -83,11 +83,12 @@ class GoogleAuthActivity : AppCompatActivity() {
 
     // Create account with Google
     fun createAccountWithGoogle(account: GoogleSignInAccount)
-    {
+    {   
         lifecycleScope.launch {
             val result = UserHelper().firebaseAuthWithGoogle(account.idToken!!)
             if (result) {
-                openIntent(this@GoogleAuthActivity, HomeActivity::class.java)
+                Toast.makeText(this@GoogleAuthActivity, ToastUtils.SIGN_IN_SUCCESS, Toast.LENGTH_SHORT).show()
+                openIntent(this@GoogleAuthActivity, HomeActivity::class.java, null, true)
             }
         }
     }

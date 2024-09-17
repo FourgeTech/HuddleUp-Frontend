@@ -12,7 +12,10 @@ class CreateTeamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = CreateTeamPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Open the CreateAccountActivity with the role set to "team"
         binding.btnContinue.setOnClickListener{
+            // Pass data to the next activity
             val data = Bundle().apply {
                 putString("role", "member")
             }

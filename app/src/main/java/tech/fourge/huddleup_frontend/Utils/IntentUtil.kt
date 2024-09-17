@@ -4,16 +4,18 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 
-fun openIntent(activity: Activity, activityToOpen: Class<*>, data: Bundle? = null) {
-    // declare intent with context and class to pass the value to
+fun openIntent(activity: Activity, activityToOpen: Class<*>, data: Bundle? = null, clearTask: Boolean = false) {
+    // Declare intent with context and class to pass the value to
     val intent = Intent(activity, activityToOpen)
-
-    // pass through the string value with key "order"
-    //intent.putExtra("username", username)
+    // Pass through the string value with key "order"
     data?.let {
         intent.putExtras(it)
     }
-    // start the activity
+    // Set flags if needed to clear task or activity stack
+    if (clearTask) {
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
+    // Start the activity
     activity.startActivity(intent)
 }
 /*==========================END OF FILE====================================================================================================================================================*/
