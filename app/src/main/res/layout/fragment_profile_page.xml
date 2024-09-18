@@ -48,14 +48,14 @@
         android:id="@+id/guideline_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuidePercent="0.5"
+        app:layout_constraintGuide_percent="0.5"
         android:orientation="horizontal" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuidePercent="0.5"
+        app:layout_constraintGuide_percent="0.5"
         android:orientation="vertical" />
 
     <!-- Settings Items -->

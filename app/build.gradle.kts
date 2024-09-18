@@ -51,6 +51,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation ("com.google.android.gms:play-services-auth:21.2.0")
+    implementation(libs.androidx.material3.android)
     testImplementation ("junit:junit:4.13.2")
     testImplementation ("org.mockito:mockito-core:5.0.1")
     testImplementation ("org.mockito:mockito-inline:5.0.1")

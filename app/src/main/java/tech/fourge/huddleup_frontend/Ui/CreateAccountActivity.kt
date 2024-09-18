@@ -12,6 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.databinding.CreateAccountBinding
+import tech.fourge.huddleup_frontend.helpers.openIntent
 
 
 class CreateAccountActivity : AppCompatActivity() {
@@ -23,6 +24,7 @@ class CreateAccountActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.continueButton.setOnClickListener{
+            openIntent(this, HomeActivity::class.java)
         }
 
         binding.continueWithGoogleButton.setOnClickListener{
