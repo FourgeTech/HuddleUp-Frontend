@@ -1,21 +1,78 @@
 package tech.fourge.huddleup_frontend.Models
 
-data class UserModel(
-    val name: String,
-    val surname: String,
-    val username: String,
-    val email: String,
-    val role: String,
-    val teamIds: List<String> = emptyList(), // Default to an empty list if not provided
-    val profilePicUrl: String = "", // Default to an empty string if not provided
-    val phoneNumber: String = "", // Default to an empty string if not provided
-    val settings: Settings = Settings() // Default to a new Settings instance if not provided
-)
-
+// Settings data class
 data class Settings(
     val matchAlerts: Boolean = true,
     val practiceAlerts: Boolean = true,
     val chatNotifications: Boolean = true,
     val preferredLanguage: String = "en",
     val theme: String = "light"
-)
+) {
+    // Method to convert Settings to a Map
+    fun toMap(): Map<String, Any> {
+        return mapOf(
+            "matchAlerts" to matchAlerts,
+            "practiceAlerts" to practiceAlerts,
+            "chatNotifications" to chatNotifications,
+            "preferredLanguage" to preferredLanguage,
+            "theme" to theme
+        )
+    }
+
+    // Method to create Settings from a Map
+    companion object {
+        fun fromMap(map: Map<String, Any?>): Settings {
+            return Settings(
+                matchAlerts = map["matchAlerts"] as? Boolean ?: true,
+                practiceAlerts = map["practiceAlerts"] as? Boolean ?: true,
+                chatNotifications = map["chatNotifications"] as? Boolean ?: true,
+                preferredLanguage = map["preferredLanguage"] as? String ?: "en",
+                theme = map["theme"] as? String ?: "light"
+            )
+        }
+    }
+}
+
+// UserModel data class
+data class UserModel(
+    var firstname: String,
+    var lastname: String,
+    var username: String,
+    var email: String,
+    var role: String,
+    var teamIds: List<String> = emptyList(),
+    var profilePicUrl: String = "",
+    var phoneNumber: String = "",
+) {
+    // Method to convert UserModel to a Map
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "firstname" to firstname,
+            "lastname" to lastname,
+            "username" to username,
+            "email" to email,
+            "role" to role,
+            "teamIds" to teamIds,
+            "profilePicUrl" to profilePicUrl,
+            "phoneNumber" to phoneNumber,
+        )
+    }
+
+    // Method to create UserModel from a Map
+    companion object {
+        fun fromMap(map: Map<String, Any?>): UserModel {
+            return UserModel(
+                firstname = map["name"] as? String ?: "",
+                lastname = map["surname"] as? String ?: "",
+                username = map["username"] as? String ?: "",
+                email = map["email"] as? String ?: "",
+                role = map["role"] as? String ?: "",
+                teamIds = (map["teamIds"] as? List<*>)?.filterIsInstance<String>() ?: emptyList(),
+                profilePicUrl = map["profilePicUrl"] as? String ?: "",
+                phoneNumber = map["phoneNumber"] as? String ?: "",
+            )
+        }
+    }
+}
+
+
