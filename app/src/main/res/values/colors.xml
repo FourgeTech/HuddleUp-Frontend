@@ -2,4 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="huddleBlue">#007EFD</color>
+    <color name="huddleWhite">#FFF2F2</color>
+    <color name="huddleGrey">#494949</color>
+    <color name="huddleBeige">#FFFADF</color>
+    <color name="focusColor">#4B2B21</color>
+    <color name="longBreakColor">#153047</color>
+    <color name="shortBreakColor">#14401D</color>
+    <color name="turboLightBlue">#E4F3FF</color>
+    <color name="huddleDarkRed">#FD0100</color>
+    <color name="huddleDarkBlue">#007BFF</color>
+    <color name="huddleYellow">#FDD500</color>
+    <color name="huddleDarkGreen">#28A745</color>
+    <color name="transparent">#00000000</color>
 </resources>
