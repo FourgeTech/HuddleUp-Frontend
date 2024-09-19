@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.AnnouncementAdapter
-import tech.fourge.huddleup_frontend.Utils.AnnouncementModel
+import tech.fourge.huddleup_frontend.Models.AnnouncementModel
 
 class HomePage : Fragment() {
 

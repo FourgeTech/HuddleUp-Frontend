@@ -1,4 +1,4 @@
-package tech.fourge.huddleup_frontend.Utils
+package tech.fourge.huddleup_frontend.Models
 
 data class AnnouncementModel(
     val name: String,
