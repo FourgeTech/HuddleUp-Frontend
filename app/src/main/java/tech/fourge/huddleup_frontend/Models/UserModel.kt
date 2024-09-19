@@ -2,9 +2,9 @@ package tech.fourge.huddleup_frontend.Models
 
 // Settings data class
 data class Settings(
-    val matchAlerts: Boolean = true,
-    val practiceAlerts: Boolean = true,
-    val chatNotifications: Boolean = true,
+    var matchAlerts: Boolean = true,
+    var practiceAlerts: Boolean = true,
+    var chatNotifications: Boolean = true,
     val preferredLanguage: String = "en",
     val theme: String = "light"
 ) {
@@ -62,8 +62,8 @@ data class UserModel(
     companion object {
         fun fromMap(map: Map<String, Any?>): UserModel {
             return UserModel(
-                firstname = map["name"] as? String ?: "",
-                lastname = map["surname"] as? String ?: "",
+                firstname = map["firstname"] as? String ?: "",
+                lastname = map["lastname"] as? String ?: "",
                 username = map["username"] as? String ?: "",
                 email = map["email"] as? String ?: "",
                 role = map["role"] as? String ?: "",

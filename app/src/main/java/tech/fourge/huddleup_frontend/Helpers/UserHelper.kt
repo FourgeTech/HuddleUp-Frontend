@@ -1,22 +1,19 @@
 package tech.fourge.huddleup_frontend.Helpers
 
 import android.util.Log
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.Firebase
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
-import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.functions
 import kotlinx.coroutines.tasks.await
 import tech.fourge.huddleup_frontend.Models.Settings
+import tech.fourge.huddleup_frontend.Models.UserModel
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 
 
 class UserHelper {
@@ -74,6 +71,7 @@ class UserHelper {
                 "uid" to user?.uid,
                 "email" to user?.email,
                 "username" to user?.displayName,
+                "firstname" to user?.displayName,
                 "role" to "manager",
             )
             functions.getHttpsCallable("createUserWithGoogle").call(data).await()
@@ -92,6 +90,10 @@ class UserHelper {
         return try {
             // Attempt to sign in with email and password
             auth.signInWithEmailAndPassword(email, password).await()
+            val uid = auth.currentUser?.uid
+            CurrentUserUtil.currentUserUID = uid!!
+            getUser(uid)
+            getSettings(uid)
             "success"
         } catch (e: FirebaseAuthException) {
             // Handle FirebaseAuth specific errors
@@ -154,44 +156,78 @@ class UserHelper {
         val settings : Settings? = null
     )
 
-    // Function to update user settings
-    fun updateUserSettings(settings: UserSettings, callback: (Result<String>) -> Unit) {
-        val currentUser = getCurrentUser()
-        if (currentUser == null) {
-            callback(Result.failure(Exception("No authenticated user")))
-            return
-        }
+    suspend fun getUser(uid: String) {
+        val getUserCallable = functions.getHttpsCallable("getUser")
 
-        val functions = FirebaseFunctions.getInstance()
-
-        // Map all fields from UserSettings
-        val data = mapOf(
-            "name" to settings.name,
-            "surname" to settings.surname,
-            "profilePicture" to settings.profilePicture,
-            "settings" to settings.settings // Assuming settings is a custom object
-        )
-
-        functions
-            .getHttpsCallable("updateUserSettings")
-            .call(data)
+        getUserCallable.call(mapOf("uid" to uid))
             .addOnSuccessListener { result ->
-                val success = result.data as? Boolean
-                if (success == true) {
-                    callback(Result.success("Settings updated successfully"))
-                } else {
-                    callback(Result.failure(Exception("Error updating settings")))
+                val userData = result.data as? Map<*, *>
+                // Handle user data
+                if (userData != null) {
+                    // Convert the map to UserModel
+                    val userModel = UserModel.fromMap(userData as Map<String, Any?>)
+                    CurrentUserUtil.currentUser = userModel
+                    // Use the UserModel object
+                    Log.d(TAG, "User: $userModel")
                 }
             }
-            .addOnFailureListener { exception ->
-                callback(Result.failure(exception))
+            .addOnFailureListener { e ->
+                // Handle error
+                Log.d(TAG, "Failed to get user: $e")
             }
     }
 
+    suspend fun updateUser(uid: String, userData: UserModel): Boolean {
+        val updateUserCallable = functions.getHttpsCallable("updateUser")
 
-    // Get current user
-    fun getCurrentUser(): FirebaseUser? {
-        return auth.currentUser
+        return try {
+            // Convert UserModel to a Map
+            val userMap = userData.toMap()
+
+            // Call the Firebase Cloud Function
+            val result = updateUserCallable.call(mapOf("uid" to uid, "userData" to userMap)).await()
+
+            // Check if the update was successful
+            if (result.data as? Boolean == true) {
+                Log.d(TAG, "User successfully updated")
+                true
+            } else {
+                Log.d(TAG, "User update failed")
+                false
+            }
+        } catch (e: Exception) {
+            Log.d(TAG, "Failed to update user: $e")
+            false
+        }
+    }
+
+    // Function to get settings
+    suspend fun getSettings(uid: String) {
+        val getSettingsCallable = functions.getHttpsCallable("getSettings")
+
+        try {
+            val result = getSettingsCallable.call(mapOf("uid" to uid)).await()
+            val settingsModel = Settings.fromMap(result.data as Map<String, Any?>)
+            CurrentUserUtil.currentUserSettings = settingsModel
+        } catch (e: Exception) {
+            Log.d(TAG, "Failed to get settings: ${e.message}")
+            null
+        }
+    }
+
+    // Function to update settings
+    suspend fun updateSettings(uid: String, settings: Settings): Boolean {
+        val updateSettingsCallable = functions.getHttpsCallable("updateSettings")
+
+        return try {
+            val settingsMap = settings.toMap()
+            val result = updateSettingsCallable.call(mapOf("uid" to uid, "settingsData" to settingsMap)).await()
+            val success = result.data as? Boolean
+            success == true
+        } catch (e: Exception) {
+            Log.d(TAG, "Failed to update settings: ${e.message}")
+            false
+        }
     }
 
     companion object {

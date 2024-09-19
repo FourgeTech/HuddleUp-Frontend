@@ -1,22 +1,14 @@
 package tech.fourge.huddleup_frontend.Ui
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import kotlinx.coroutines.launch
-import tech.fourge.huddleup_frontend.R
-import tech.fourge.huddleup_frontend.Utils.openIntent
 import tech.fourge.huddleup_frontend.databinding.CreateAccountBinding
+import tech.fourge.huddleup_frontend.Utils.openIntent
 import tech.fourge.huddleup_frontend.Helpers.UserHelper
-import tech.fourge.huddleup_frontend.Models.UserModel
 import tech.fourge.huddleup_frontend.Utils.ToastUtils
 import tech.fourge.huddleup_frontend.Utils.ValidationUtils
 

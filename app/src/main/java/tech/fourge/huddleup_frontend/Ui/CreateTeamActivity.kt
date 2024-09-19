@@ -1,9 +1,7 @@
 package tech.fourge.huddleup_frontend.Ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.functions.FirebaseFunctions
 import tech.fourge.huddleup_frontend.databinding.CreateTeamPageBinding
 import tech.fourge.huddleup_frontend.Utils.openIntent
 
