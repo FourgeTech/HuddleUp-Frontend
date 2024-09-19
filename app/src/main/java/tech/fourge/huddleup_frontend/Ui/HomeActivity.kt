@@ -12,11 +12,5 @@ class HomeActivity : AppCompatActivity() {
         val binding = HomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.testbutton.setOnClickListener {
-            Log.d("MainActivity", "Join Team button clicked")
-            openIntent(this, SettingsActivity::class.java)
-        }
-
-
     }
 }
