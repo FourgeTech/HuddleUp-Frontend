@@ -19,9 +19,9 @@ class HomeActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.locker_room -> replaceFragment(HomePage())
-                //R.id.team -> replaceFragment(FragmentTeamPage())
-                //R.id.attendance -> replaceFragment(FragmentAttendancePage())
-                //R.id.chat -> replaceFragment(FragmentChatPage())
+                R.id.team -> replaceFragment(FragmentTeamPage())
+                R.id.attendance -> replaceFragment(FragmentAttendancePage())
+                R.id.chat -> replaceFragment(FragmentChatPage())
                 R.id.profile -> replaceFragment(FragmentProfilePage())
                 else -> {}
             }
