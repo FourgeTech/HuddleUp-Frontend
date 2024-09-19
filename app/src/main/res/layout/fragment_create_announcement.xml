@@ -26,43 +26,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.45" />
 
-    <!-- Title for Announcements -->
+
     <TextView
-        android:id="@+id/tvAnnouncements"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Announcements"
+        android:text="Create Announcement"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintEnd_toEndOf="@+id/guideline_right" />
+        app:layout_constraintBottom_toTopOf="@id/guideline_top"
+        app:layout_constraintLeft_toRightOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right"/>
+    <!-- Message Field -->
+    <EditText
+        android:id="@+id/etMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Type Announcement Here"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:maxLines="6"
+        android:scrollbars="vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right" />
 
+    <!-- Submit Button -->
     <Button
-        android:id="@+id/btnAddAnnouncement"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Annoucement"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/tvAnnouncements" />
-
-    <!-- RecyclerView for dynamic content -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Post Announcement"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/btnAddAnnouncement"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_announcement" />
+        app:layout_constraintTop_toBottomOf="@id/etMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

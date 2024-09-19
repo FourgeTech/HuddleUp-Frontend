@@ -47,20 +47,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Practice Rescheduled for 5PM"
-        app:layout_constraintTop_toBottomOf="@+id/tvTime"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tvName"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
-    <!-- Input Field -->
-    <EditText
-        android:id="@+id/editReply"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Reply"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tvAnnouncementText"
-        app:layout_constraintStart_toStartOf="@id/tvAnnouncementText"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Eye Icon and View Count -->
     <TextView
@@ -68,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3 / 10"
-        app:layout_constraintTop_toBottomOf="@+id/editReply"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementText" />
 
     <!-- More Info Link -->
     <TextView
@@ -78,7 +68,7 @@
         android:layout_height="wrap_content"
         android:text="More info"
         android:textColor="@android:color/holo_blue_dark"
-        app:layout_constraintTop_toBottomOf="@+id/editReply"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
