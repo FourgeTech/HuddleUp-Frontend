@@ -68,6 +68,10 @@ class FragmentEditProfilePage : Fragment() {
                     Log.d(TAG, "Error during user update: ${e.message}")
                 }
             }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, FragmentProfilePage())
+                .addToBackStack(null)
+                .commit()
         }
         return view
     }

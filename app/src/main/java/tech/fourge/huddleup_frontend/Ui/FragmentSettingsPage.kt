@@ -64,6 +64,10 @@ class FragmentSettingsPage : Fragment() {
                 UserHelper().updateSettings(currentUserUID, CurrentUserUtil.currentUserSettings)
                 UserHelper().getSettings(CurrentUserUtil.currentUserUID!!)
             }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, FragmentProfilePage())
+                .addToBackStack(null)
+                .commit()
 
         }
         view.findViewById<Button>(R.id.buttonCancel).setOnClickListener {
