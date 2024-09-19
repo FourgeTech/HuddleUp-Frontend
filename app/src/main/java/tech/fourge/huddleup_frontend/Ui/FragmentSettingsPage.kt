@@ -5,7 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Switch
+import android.widget.ToggleButton
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import tech.fourge.huddleup_frontend.Helpers.UserHelper
 import tech.fourge.huddleup_frontend.R
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUserUID
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +44,39 @@ class FragmentSettingsPage : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat_page, container, false) // Must change!!
+        val view = inflater.inflate(R.layout.fragment_settings_page, container, false) // Must change!!
+
+        view.findViewById<Button>(R.id.buttonSave).setOnClickListener {
+
+            val matchAlerts = view.findViewById<Switch>(R.id.matchAlertsSwitch).isChecked
+            val practiceAlerts = view.findViewById<Switch>(R.id.practiceAlertsSwitch).isChecked
+            val chatNotifications = view.findViewById<Switch>(R.id.chatNotificationsSwitch).isChecked
+            val editTheme = view.findViewById<EditText>(R.id.editTheme).text.toString()
+            val editLanguage = view.findViewById<EditText>(R.id.editLanguage).text.toString()
+
+            CurrentUserUtil.currentUserSettings.matchAlerts = matchAlerts
+            CurrentUserUtil.currentUserSettings.practiceAlerts = practiceAlerts
+            CurrentUserUtil.currentUserSettings.chatNotifications = chatNotifications
+            CurrentUserUtil.currentUserSettings.preferredLanguage = editLanguage
+            CurrentUserUtil.currentUserSettings.theme = editTheme
+
+            lifecycleScope.launch{
+                UserHelper().updateSettings(currentUserUID, CurrentUserUtil.currentUserSettings)
+                UserHelper().getSettings(CurrentUserUtil.currentUserUID!!)
+            }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, FragmentProfilePage())
+                .addToBackStack(null)
+                .commit()
+
+        }
+        view.findViewById<Button>(R.id.buttonCancel).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, FragmentProfilePage())
+                .addToBackStack(null)
+                .commit()
+        }
+        return view
     }
 
     companion object {

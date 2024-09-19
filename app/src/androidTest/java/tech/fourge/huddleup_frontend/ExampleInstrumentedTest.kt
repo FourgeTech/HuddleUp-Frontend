@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("tech.fourge.huddleup_frontend", appContext.packageName)
+        assertEquals("tech.fourge.huddleup", appContext.packageName)
     }
 }

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import tech.fourge.huddleup_frontend.Models.AnnouncementModel
 import tech.fourge.huddleup_frontend.R //
 
 class AnnouncementAdapter(private val announcements: List<AnnouncementModel>) :

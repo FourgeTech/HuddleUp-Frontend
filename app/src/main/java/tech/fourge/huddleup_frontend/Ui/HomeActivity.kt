@@ -1,7 +1,9 @@
 package tech.fourge.huddleup_frontend.Ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import tech.fourge.huddleup_frontend.Utils.openIntent
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import tech.fourge.huddleup_frontend.R

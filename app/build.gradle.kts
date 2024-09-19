@@ -1,6 +1,5 @@
 
-import org.jetbrains.kotlin.types.checker.TypeRefinementSupport.Disabled.isEnabled
-
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -21,7 +20,20 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val properties = Properties()
+        val localPropertiesFile = project.rootProject.file("local.properties")
+
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use { properties.load(it) }
+        }
+
+        val googleClientId = properties.getProperty("GOOGLE_CLIENT_ID") ?: throw GradleException("GOOGLE_CLIENT_ID is missing in local.properties")
+
+        // Add GOOGLE_CLIENT_ID to BuildConfig
+        buildConfigField("String", "GOOGLE_CLIENT_ID", "\"$googleClientId\"")
     }
+
 
     buildTypes {
         release {
@@ -35,6 +47,8 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -50,11 +64,10 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
+    implementation ("com.google.android.gms:play-services-base:18.5.0")
     implementation ("com.google.android.gms:play-services-auth:21.2.0")
     implementation(libs.androidx.material3.android)
     testImplementation ("junit:junit:4.13.2")
-    testImplementation ("org.mockito:mockito-core:5.0.1")
-    testImplementation ("org.mockito:mockito-inline:5.0.1")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -62,7 +75,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.ui.test.android)
+    implementation(libs.firebase.functions.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
