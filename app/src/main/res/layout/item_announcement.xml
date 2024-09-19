@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:elevation="4dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/profile_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Name -->
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Aidan Smith"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@+id/imgProfile"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Time of post -->
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7min"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile" />
+
+    <!-- Announcement Text -->
+    <TextView
+        android:id="@+id/tvAnnouncementText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Practice Rescheduled for 5PM"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Input Field -->
+    <EditText
+        android:id="@+id/editReply"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Reply"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAnnouncementText"
+        app:layout_constraintStart_toStartOf="@id/tvAnnouncementText"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Eye Icon and View Count -->
+    <TextView
+        android:id="@+id/tvViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 / 10"
+        app:layout_constraintTop_toBottomOf="@+id/editReply"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- More Info Link -->
+    <TextView
+        android:id="@+id/tvMoreInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More info"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintTop_toBottomOf="@+id/editReply"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
