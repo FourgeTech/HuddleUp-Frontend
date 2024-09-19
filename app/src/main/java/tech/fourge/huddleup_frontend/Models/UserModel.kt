@@ -5,8 +5,8 @@ data class Settings(
     var matchAlerts: Boolean = true,
     var practiceAlerts: Boolean = true,
     var chatNotifications: Boolean = true,
-    val preferredLanguage: String = "en",
-    val theme: String = "light"
+    var preferredLanguage: String = "en",
+    var theme: String = "light"
 ) {
     // Method to convert Settings to a Map
     fun toMap(): Map<String, Any> {

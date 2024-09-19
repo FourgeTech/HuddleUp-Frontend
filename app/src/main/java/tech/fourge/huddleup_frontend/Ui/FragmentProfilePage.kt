@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import tech.fourge.huddleup_frontend.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -43,6 +44,14 @@ class FragmentProfilePage : Fragment() {
         editProfileButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, FragmentEditProfilePage())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        val editSettingsButton: LinearLayout = view.findViewById(R.id.settings_item)
+        editSettingsButton.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, FragmentSettingsPage())
                 .addToBackStack(null)
                 .commit()
         }

@@ -101,22 +101,22 @@
         app:layout_constraintTop_toBottomOf="@id/last_name_title" />
 
     <TextView
-        android:id="@+id/email_title"
+        android:id="@+id/phonenumber_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Email"
+        android:text="Phone Number"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/edit_last_name"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
 
     <EditText
-        android:id="@+id/edit_email"
+        android:id="@+id/edit_phone_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintTop_toBottomOf="@id/email_title" />
+        app:layout_constraintTop_toBottomOf="@id/phonenumber_title" />
 
     <TextView
         android:id="@+id/username_title"
@@ -125,14 +125,13 @@
         android:layout_marginTop="4dp"
         android:text="Username"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/edit_email"
+        app:layout_constraintTop_toBottomOf="@id/edit_phone_number"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
 
     <EditText
-        android:id="@+id/edit_password"
+        android:id="@+id/edit_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintTop_toBottomOf="@id/username_title" />
