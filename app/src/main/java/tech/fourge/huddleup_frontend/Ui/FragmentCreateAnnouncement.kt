@@ -57,7 +57,10 @@ class FragmentCreateAnnouncement : Fragment() {
 
         // Generate a new announcementId and current timestamp
         val announcementId = UUID.randomUUID().toString()
-        val currentTime = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).format(Date())
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getTimeZone("Africa/Johannesburg")
+        val currentTime = dateFormat.format(Date())
+
 
         // Create the AnnouncementModel object
         val announcement = AnnouncementModel(

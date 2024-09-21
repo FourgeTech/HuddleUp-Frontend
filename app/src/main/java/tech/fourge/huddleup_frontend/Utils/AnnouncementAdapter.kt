@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import tech.fourge.huddleup_frontend.Models.AnnouncementModel
 import tech.fourge.huddleup_frontend.R
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class AnnouncementAdapter(private val announcements: List<AnnouncementModel>) :
     RecyclerView.Adapter<AnnouncementAdapter.ViewHolder>() {
@@ -23,9 +26,9 @@ class AnnouncementAdapter(private val announcements: List<AnnouncementModel>) :
 
         val announcement: AnnouncementModel = announcements[position]
         holder.tvName.text = announcement.createdBy
-        holder.tvTime.text = announcement.createdAt
+        holder.tvTime.text = formatTimestampToTime(announcement.createdAt)
         holder.tvAnnouncementText.text = announcement.message
-        holder.tvViews.text = "${announcement.viewCount}"
+        holder.tvViews.text = "${announcement.viewCount}" + "/10"
     }
 
     override fun getItemCount(): Int {
@@ -38,4 +41,17 @@ class AnnouncementAdapter(private val announcements: List<AnnouncementModel>) :
         var tvAnnouncementText: TextView = itemView.findViewById(R.id.tvAnnouncementText)
         var tvViews: TextView = itemView.findViewById(R.id.tvViews)
     }
+
+    fun formatTimestampToTime(timestamp: String): String {
+
+        // Parse the timestamp string to Instant
+        val instant = Instant.parse(timestamp)
+
+        // Correct the DateTimeFormatter pattern
+        val formatter = DateTimeFormatter.ofPattern("d MMMM HH:mm")
+            .withZone(ZoneId.of("Africa/Johannesburg"))
+
+        return formatter.format(instant)
+    }
+
 }
