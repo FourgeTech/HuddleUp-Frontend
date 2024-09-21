@@ -43,7 +43,7 @@ class FragmentEditProfilePage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_edit_profile_page, container, false)
-
+        
         view.findViewById<EditText>(R.id.edit_first_name).setHint(CurrentUserUtil.currentUser.firstname)
         view.findViewById<EditText>(R.id.edit_last_name).setHint(CurrentUserUtil.currentUser.lastname)
         view.findViewById<EditText>(R.id.edit_phone_number).setHint(CurrentUserUtil.currentUser.phoneNumber)
@@ -70,8 +70,11 @@ class FragmentEditProfilePage : Fragment() {
             if (username.isNotEmpty()) {
                 CurrentUserUtil.currentUser.username = username
             }
-
-
+            CurrentUserUtil.currentUser.firstname = firstname
+            CurrentUserUtil.currentUser.lastname = lastname
+            CurrentUserUtil.currentUser.phoneNumber = phoneNumber
+            CurrentUserUtil.currentUser.username = username
+          
             lifecycleScope.launch {
                 val currentUserUID = CurrentUserUtil.currentUserUID
                 val currentUser = CurrentUserUtil.currentUser

@@ -220,8 +220,6 @@ class UserHelper {
             null // Return null in case of failure
         }
     }
-
-
     // Function to update settings
     suspend fun updateSettings(uid: String, settings: Settings): Boolean {
         val updateSettingsCallable = functions.getHttpsCallable("updateSettings")
@@ -232,6 +230,8 @@ class UserHelper {
             val success = result.data as? Map<String, Any>
             Log.d(TAG, "Settings updated successfully:" + settingsMap.toString())
             return success?.get("success") as? Boolean ?: false
+            val success = result.data as? Boolean
+            success == true
         } catch (e: Exception) {
             Log.d(TAG, "Failed to update settings: ${e.message}")
             false

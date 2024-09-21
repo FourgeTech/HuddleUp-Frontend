@@ -61,20 +61,15 @@ class FragmentProfilePage : Fragment() {
 
         val editSettingsButton: LinearLayout = view.findViewById(R.id.settings_item)
         editSettingsButton.setOnClickListener {
-
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, FragmentSettingsPage())
                 .addToBackStack(null)
                 .commit()
         }
-
         view.findViewById<TextView>(R.id.profile_name).text = CurrentUserUtil.currentUser.firstname + " " + CurrentUserUtil.currentUser.lastname
         view.findViewById<TextView>(R.id.profile_username).text = CurrentUserUtil.currentUser.username
         view.findViewById<TextView>(R.id.profile_email).text = CurrentUserUtil.currentUser.email
         view.findViewById<TextView>(R.id.profile_phone).text = CurrentUserUtil.currentUser.phoneNumber
-
-
-
 
         return view
     }
