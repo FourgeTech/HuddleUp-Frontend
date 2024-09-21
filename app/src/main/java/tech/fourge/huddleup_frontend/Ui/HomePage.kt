@@ -17,13 +17,13 @@ import tech.fourge.huddleup_frontend.Helpers.AnnouncementHelper
 import tech.fourge.huddleup_frontend.Models.AnnouncementModel
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.AnnouncementAdapter
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUser
 
 class HomePage : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AnnouncementAdapter
     private lateinit var btnAddAnnouncement: Button
-    private var announcementList: List<AnnouncementModel> = emptyList()
     private lateinit var announcementHelper: AnnouncementHelper
 
     override fun onCreateView(
@@ -32,6 +32,12 @@ class HomePage : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home_page, container, false)
         btnAddAnnouncement = view.findViewById(R.id.btnAddAnnouncement)
+        if(currentUser.role != "manager"){
+            btnAddAnnouncement.visibility = View.GONE
+        }
+        else{
+            btnAddAnnouncement.visibility = View.VISIBLE
+        }
         btnAddAnnouncement.setOnClickListener {
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.fragment_container, FragmentCreateAnnouncement())
