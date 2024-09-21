@@ -70,11 +70,7 @@ class FragmentEditProfilePage : Fragment() {
             if (username.isNotEmpty()) {
                 CurrentUserUtil.currentUser.username = username
             }
-            CurrentUserUtil.currentUser.firstname = firstname
-            CurrentUserUtil.currentUser.lastname = lastname
-            CurrentUserUtil.currentUser.phoneNumber = phoneNumber
-            CurrentUserUtil.currentUser.username = username
-          
+
             lifecycleScope.launch {
                 val currentUserUID = CurrentUserUtil.currentUserUID
                 val currentUser = CurrentUserUtil.currentUser

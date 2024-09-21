@@ -16,9 +16,9 @@ import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.Helpers.UserHelper
 import tech.fourge.huddleup_frontend.Models.Settings
 import tech.fourge.huddleup_frontend.R
-import kotlin.math.log
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
-import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUserUID
+
+import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,7 +59,7 @@ class FragmentSettingsPage : Fragment() {
             val settings = UserHelper().getSettings(CurrentUserUtil.currentUserUID)
             Log.d("SettingsLoad", "Settings: $settings")
             if (settings != null) {
-                 // Update UI with fetched settings
+                // Update UI with fetched settings
                 view.findViewById<EditText>(R.id.editTheme).setHint(settings.theme)
                 view.findViewById<EditText>(R.id.editLanguage).setHint(settings.preferredLanguage)
                 view.findViewById<Switch>(R.id.matchAlertsSwitch).isChecked = settings.matchAlerts
@@ -73,10 +73,6 @@ class FragmentSettingsPage : Fragment() {
         // Set up the click listener for the Save Settings button
         val editSettingsButton: Button = view.findViewById(R.id.buttonSave)
         editSettingsButton.setOnClickListener {
-        val view = inflater.inflate(R.layout.fragment_settings_page, container, false) // Must change!!
-
-        view.findViewById<Button>(R.id.buttonSave).setOnClickListener {
-
             val matchAlerts = view.findViewById<Switch>(R.id.matchAlertsSwitch).isChecked
             val practiceAlerts = view.findViewById<Switch>(R.id.practiceAlertsSwitch).isChecked
             val chatNotifications = view.findViewById<Switch>(R.id.chatNotificationsSwitch).isChecked
@@ -107,30 +103,18 @@ class FragmentSettingsPage : Fragment() {
             }
 
             // Navigate back to profile page
-            CurrentUserUtil.currentUserSettings.matchAlerts = matchAlerts
-            CurrentUserUtil.currentUserSettings.practiceAlerts = practiceAlerts
-            CurrentUserUtil.currentUserSettings.chatNotifications = chatNotifications
-            CurrentUserUtil.currentUserSettings.preferredLanguage = editLanguage
-            CurrentUserUtil.currentUserSettings.theme = editTheme
-
-            lifecycleScope.launch{
-                UserHelper().updateSettings(currentUserUID, CurrentUserUtil.currentUserSettings)
-                UserHelper().getSettings(CurrentUserUtil.currentUserUID!!)
-            }
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, FragmentProfilePage())
                 .addToBackStack(null)
                 .commit()
         }
 
-        }
         view.findViewById<Button>(R.id.buttonCancel).setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, FragmentProfilePage())
                 .addToBackStack(null)
                 .commit()
         }
-        return view
     }
 
     companion object {

@@ -78,26 +78,6 @@ class CreateAccountActivity : AppCompatActivity() {
 
         // Check if form fields are empty
         if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || username.isEmpty() || confirmPassword.isEmpty()) {
-        // Create Account with Google
-        binding.continueWithGoogleButton.setOnClickListener {
-            val data = Bundle().apply {
-                putString("action", "register")
-            }
-            openIntent(this, GoogleAuthActivity::class.java,data)
-        }
-    }
-
-    // Handle Form Submission
-    private fun handleFormSubmission(): Boolean {
-        firstname = binding.inputFirstName.text.toString()
-        lastname = binding.inputLastName.text.toString()
-        email = binding.inputEmail.text.toString()
-        username = binding.inputUsername.text.toString()
-        password = binding.inputPassword.text.toString()
-        val confirmPassword = binding.inputConfirmPassword.text.toString()
-
-        // Check if form fields are empty
-        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || username.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(this, ToastUtils.EMPTY_FIELDS_ERROR, Toast.LENGTH_SHORT).show()
             return false
         }

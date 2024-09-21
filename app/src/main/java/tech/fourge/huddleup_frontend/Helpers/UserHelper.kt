@@ -24,8 +24,8 @@ class UserHelper {
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
-        //functions.useEmulator("10.0.2.2", 5001)
-        //auth.useEmulator("10.0.2.2", 9099)
+        functions.useEmulator("10.0.2.2", 5001)
+        auth.useEmulator("10.0.2.2", 9099)
         auth.signOut()
     }
 
@@ -230,8 +230,6 @@ class UserHelper {
             val success = result.data as? Map<String, Any>
             Log.d(TAG, "Settings updated successfully:" + settingsMap.toString())
             return success?.get("success") as? Boolean ?: false
-            val success = result.data as? Boolean
-            success == true
         } catch (e: Exception) {
             Log.d(TAG, "Failed to update settings: ${e.message}")
             false
