@@ -78,22 +78,63 @@
             android:background="?android:attr/selectableItemBackground">
 
             <ImageView
-                android:id="@+id/profile_icon"
+                android:id="@+id/username"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/profile_icon"
-                app:tint="#000" />
+                android:src="@drawable/username_icon" />
 
             <TextView
-                android:id="@+id/profile_text"
+                android:id="@+id/profile_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Profile"
+                android:text=""
                 android:textSize="16sp"
                 android:layout_marginStart="16dp" />
         </LinearLayout>
 
-        <!-- Settings Item -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/email"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/mail_icon" />
+
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/phone"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/phone_icon" />
+            <TextView
+                android:id="@+id/profile_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/settings_item"
             android:layout_width="match_parent"
@@ -143,4 +184,5 @@
                 android:textColor="#FF0000" />
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
