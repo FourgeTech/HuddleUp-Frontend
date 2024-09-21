@@ -24,13 +24,13 @@ class UserHelper {
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
-        functions.useEmulator("10.0.2.2", 5001)
-        auth.useEmulator("10.0.2.2", 9099)
+        //functions.useEmulator("10.0.2.2", 5001)
+        //auth.useEmulator("10.0.2.2", 9099)
         auth.signOut()
     }
 
     // Sign up a new user with email and password
-    suspend fun registerUser(email: String, password: String, firstname:String, lastname:String, role:String): String {
+    suspend fun registerUser(email: String, password: String, firstname:String, lastname:String, role:String, username:String): String {
         return try {
             val data = hashMapOf(
                 "email" to email,
@@ -38,7 +38,7 @@ class UserHelper {
                 "role" to role,
                 "firstname" to firstname,
                 "lastname" to lastname,
-                "username" to "yugen2004",
+                "username" to username,
             )
             // Call the Firebase function for user creation
             val result = functions.getHttpsCallable("createUser").call(data).await()
