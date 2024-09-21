@@ -7,6 +7,6 @@ class CurrentUserUtil {
     companion object {
         var currentUser: UserModel = UserModel("", "", "", "", "")
         var currentUserUID: String = ""
-        var currentUserSettings: Settings = Settings()
+       lateinit var currentUserSettings: Settings
     }
 }

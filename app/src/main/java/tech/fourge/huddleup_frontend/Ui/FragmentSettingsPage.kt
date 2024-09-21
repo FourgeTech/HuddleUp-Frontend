@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.Helpers.UserHelper
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUserSettings
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUserUID
 
 // TODO: Rename parameter arguments, choose names that match
@@ -61,8 +62,8 @@ class FragmentSettingsPage : Fragment() {
             CurrentUserUtil.currentUserSettings.theme = editTheme
 
             lifecycleScope.launch{
-                UserHelper().updateSettings(currentUserUID, CurrentUserUtil.currentUserSettings)
-                UserHelper().getSettings(CurrentUserUtil.currentUserUID!!)
+                UserHelper().updateSettings(currentUserUID, currentUserSettings)
+                UserHelper().getSettings(currentUserUID)
             }
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, FragmentProfilePage())
