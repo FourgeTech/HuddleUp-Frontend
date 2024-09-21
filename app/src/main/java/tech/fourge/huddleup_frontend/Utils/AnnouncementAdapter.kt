@@ -1,5 +1,6 @@
 package tech.fourge.huddleup_frontend.Utils
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,8 @@ class AnnouncementAdapter(private val announcements: List<AnnouncementModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.d("HomePage", "Fetched Announcements: $announcements")
+
         val announcement: AnnouncementModel = announcements[position]
         holder.tvName.text = announcement.createdBy
         holder.tvTime.text = announcement.createdAt
