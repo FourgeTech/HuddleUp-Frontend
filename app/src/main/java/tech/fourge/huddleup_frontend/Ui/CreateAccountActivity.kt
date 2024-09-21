@@ -20,6 +20,7 @@ class CreateAccountActivity : AppCompatActivity() {
     lateinit var password: String
     lateinit var firstname: String
     lateinit var lastname: String
+    lateinit var username: String
     lateinit var role: String
     val validationUtils = ValidationUtils()
 
@@ -44,7 +45,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
             // If the form submission is valid, proceed to register the user
             lifecycleScope.launch {
-                val result = UserHelper().registerUser(email, password, firstname, lastname, role)
+                val result = UserHelper().registerUser(email, password, firstname, lastname, role, username)
                 if (result == "success") {
                     // If the user is successfully registered, open the HomeActivity
                     UserHelper().signIn(email, password)
@@ -71,11 +72,32 @@ class CreateAccountActivity : AppCompatActivity() {
         firstname = binding.inputFirstName.text.toString()
         lastname = binding.inputLastName.text.toString()
         email = binding.inputEmail.text.toString()
+        username = binding.inputUsername.text.toString()
         password = binding.inputPassword.text.toString()
         val confirmPassword = binding.inputConfirmPassword.text.toString()
 
         // Check if form fields are empty
-        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || confirmPassword.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || username.isEmpty() || confirmPassword.isEmpty()) {
+        // Create Account with Google
+        binding.continueWithGoogleButton.setOnClickListener {
+            val data = Bundle().apply {
+                putString("action", "register")
+            }
+            openIntent(this, GoogleAuthActivity::class.java,data)
+        }
+    }
+
+    // Handle Form Submission
+    private fun handleFormSubmission(): Boolean {
+        firstname = binding.inputFirstName.text.toString()
+        lastname = binding.inputLastName.text.toString()
+        email = binding.inputEmail.text.toString()
+        username = binding.inputUsername.text.toString()
+        password = binding.inputPassword.text.toString()
+        val confirmPassword = binding.inputConfirmPassword.text.toString()
+
+        // Check if form fields are empty
+        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || username.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(this, ToastUtils.EMPTY_FIELDS_ERROR, Toast.LENGTH_SHORT).show()
             return false
         }
@@ -92,6 +114,11 @@ class CreateAccountActivity : AppCompatActivity() {
         // Check if passwords match
         if (!validationUtils.doStringsMatch(binding.inputPassword.text.toString(), binding.inputConfirmPassword.text.toString())) {
             Toast.makeText(this, ToastUtils.PASSWORDS_DONT_MATCH_ERROR, Toast.LENGTH_SHORT).show()
+            return false
+        }
+        // Check if username is valid
+        if (!validationUtils.isValidUsername(username)) {
+            Toast.makeText(this, ToastUtils.INVALID_USERNAME_ERROR, Toast.LENGTH_SHORT).show()
             return false
         }
         // If all checks pass, return true

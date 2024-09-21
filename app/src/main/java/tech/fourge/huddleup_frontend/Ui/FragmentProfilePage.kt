@@ -6,8 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.Switch
+import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.functions.FirebaseFunctions
+import tech.fourge.huddleup_frontend.Helpers.UserHelper
 import tech.fourge.huddleup_frontend.R
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
+import tech.fourge.huddleup_frontend.Ui.FragmentSettingsPage
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +31,9 @@ class FragmentProfilePage : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private val functions = FirebaseFunctions.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +66,11 @@ class FragmentProfilePage : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+        view.findViewById<TextView>(R.id.profile_name).text = CurrentUserUtil.currentUser.firstname + " " + CurrentUserUtil.currentUser.lastname
+        view.findViewById<TextView>(R.id.profile_username).text = CurrentUserUtil.currentUser.username
+        view.findViewById<TextView>(R.id.profile_email).text = CurrentUserUtil.currentUser.email
+        view.findViewById<TextView>(R.id.profile_phone).text = CurrentUserUtil.currentUser.phoneNumber
+
         return view
     }
 
