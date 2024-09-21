@@ -22,5 +22,10 @@ class MainActivity : AppCompatActivity() {
         binding.createTeamButton.setOnClickListener{
             openIntent(this, CreateTeamActivity::class.java)
         }
+
+        // Open the JoinTeamActivity
+        binding.joinTeamButton.setOnClickListener{
+            openIntent(this, JoinTeamActivity::class.java)
+        }
     }
 }
