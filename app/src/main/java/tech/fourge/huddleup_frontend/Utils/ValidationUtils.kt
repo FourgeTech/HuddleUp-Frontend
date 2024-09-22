@@ -46,4 +46,8 @@ class ValidationUtils {
     fun isValidName(name: String): Boolean {
         return name.all { it.isLetter() || it.isWhitespace() }
     }
+    // Validate username (example: minimum 3 characters, no special characters)
+    fun isValidUsername(username: String): Boolean {
+        return username.length >= 3 && username.all { it.isLetterOrDigit() }
+    }
 }

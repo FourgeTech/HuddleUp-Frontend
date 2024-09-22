@@ -30,7 +30,7 @@ class UserHelper {
     }
 
     // Sign up a new user with email and password
-    suspend fun registerUser(email: String, password: String, firstname:String, lastname:String, role:String): String {
+    suspend fun registerUser(email: String, password: String, firstname:String, lastname:String, role:String, username:String): String {
         return try {
             val data = hashMapOf(
                 "email" to email,
@@ -38,7 +38,7 @@ class UserHelper {
                 "role" to role,
                 "firstname" to firstname,
                 "lastname" to lastname,
-                "username" to "yugen2004",
+                "username" to username,
             )
             // Call the Firebase function for user creation
             val result = functions.getHttpsCallable("createUser").call(data).await()
@@ -202,19 +202,24 @@ class UserHelper {
     }
 
     // Function to get settings
-    suspend fun getSettings(uid: String) {
+    suspend fun getSettings(uid: String): Settings? {
         val getSettingsCallable = functions.getHttpsCallable("getSettings")
 
-        try {
+        return try {
             val result = getSettingsCallable.call(mapOf("uid" to uid)).await()
-            val settingsModel = Settings.fromMap(result.data as Map<String, Any?>)
-            CurrentUserUtil.currentUserSettings = settingsModel
+            val dataMap = result.data as? Map<*, *>
+            val settingsData = dataMap?.get("settings") as? Map<*, *>
+            val settingsMap = Settings.fromMap(settingsData as Map<String, Any?>)
+
+            Log.d(TAG, "Settings: $settingsData")
+
+            // Return the fetched settings
+            settingsMap
         } catch (e: Exception) {
             Log.d(TAG, "Failed to get settings: ${e.message}")
-            null
+            null // Return null in case of failure
         }
     }
-
     // Function to update settings
     suspend fun updateSettings(uid: String, settings: Settings): Boolean {
         val updateSettingsCallable = functions.getHttpsCallable("updateSettings")
@@ -222,8 +227,9 @@ class UserHelper {
         return try {
             val settingsMap = settings.toMap()
             val result = updateSettingsCallable.call(mapOf("uid" to uid, "settingsData" to settingsMap)).await()
-            val success = result.data as? Boolean
-            success == true
+            val success = result.data as? Map<String, Any>
+            Log.d(TAG, "Settings updated successfully:" + settingsMap.toString())
+            return success?.get("success") as? Boolean ?: false
         } catch (e: Exception) {
             Log.d(TAG, "Failed to update settings: ${e.message}")
             false

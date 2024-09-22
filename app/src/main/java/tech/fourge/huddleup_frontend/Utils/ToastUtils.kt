@@ -11,4 +11,5 @@ object ToastUtils {
     const val SIGN_OUT_SUCCESS = "Sign out successful"
     const val ACCOUNT_EXISTS_ERROR = "Account already exists"
     const val ACCOUNT_DOES_NOT_EXIST_ERROR = "Account does not exist"
+    const val INVALID_USERNAME_ERROR = "Username must be at least 3 characters long and contain only letters and digits."
 }

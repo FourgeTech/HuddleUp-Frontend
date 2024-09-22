@@ -43,6 +43,12 @@ class FragmentEditProfilePage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_edit_profile_page, container, false)
+        
+        view.findViewById<EditText>(R.id.edit_first_name).setHint(CurrentUserUtil.currentUser.firstname)
+        view.findViewById<EditText>(R.id.edit_last_name).setHint(CurrentUserUtil.currentUser.lastname)
+        view.findViewById<EditText>(R.id.edit_phone_number).setHint(CurrentUserUtil.currentUser.phoneNumber)
+        view.findViewById<EditText>(R.id.edit_username).setHint(CurrentUserUtil.currentUser.username)
+        view.findViewById<EditText>(R.id.edit_username).setHint(CurrentUserUtil.currentUser.username)
 
         // Set up the click listener for the Edit Profile button
         val editProfileButton: Button = view.findViewById(R.id.save_button)
@@ -52,10 +58,18 @@ class FragmentEditProfilePage : Fragment() {
             val phoneNumber = view.findViewById<EditText>(R.id.edit_phone_number).text.toString()
             val username = view.findViewById<EditText>(R.id.edit_username).text.toString()
 
-            CurrentUserUtil.currentUser.firstname = firstname
-            CurrentUserUtil.currentUser.lastname = lastname
-            CurrentUserUtil.currentUser.phoneNumber = phoneNumber
-            CurrentUserUtil.currentUser.username = username
+            if (firstname.isNotEmpty()) {
+                CurrentUserUtil.currentUser.firstname = firstname
+            }
+            if (lastname.isNotEmpty()) {
+                CurrentUserUtil.currentUser.lastname = lastname
+            }
+            if (phoneNumber.isNotEmpty()) {
+                CurrentUserUtil.currentUser.phoneNumber = phoneNumber
+            }
+            if (username.isNotEmpty()) {
+                CurrentUserUtil.currentUser.username = username
+            }
 
             lifecycleScope.launch {
                 val currentUserUID = CurrentUserUtil.currentUserUID
