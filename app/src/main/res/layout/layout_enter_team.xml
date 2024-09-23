@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team Name"
+        android:fontFamily="@font/poppins"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginBottom="4dp"/>
 
@@ -19,7 +20,11 @@
         android:id="@+id/editTextTeamName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="10dp"
         android:hint="Enter team name"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
         android:inputType="textPersonName"/>
 
     <!-- Label for the chat type spinner -->
@@ -28,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chat Type"
+        android:fontFamily="@font/poppins"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"/>
@@ -36,6 +42,7 @@
     <Spinner
         android:id="@+id/spinnerChatType"
         android:layout_width="match_parent"
+        android:fontFamily="@font/poppins"
         android:layout_height="wrap_content"/>
 
     <TextView
@@ -43,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team Description"
+        android:fontFamily="@font/poppins"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"/>
@@ -53,6 +61,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter team description"
+        android:paddingStart="10dp"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
         android:inputType="textPersonName"/>
 
 </LinearLayout>

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineMiddle"
@@ -43,13 +43,18 @@
 
     <TextView
         android:id="@+id/join_team_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="384dp"
+        android:layout_height="54dp"
+        android:gravity="center"
         android:layout_marginTop="4dp"
-        android:text="Join Team"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        android:text="Join a Team"
+        android:textColor="@color/huddleBlue"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintBottom_toTopOf="@id/guidelineTop" />
 
     <TextView
         android:id="@+id/join_team_description"
@@ -57,9 +62,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="It's time to Join the Dream Team"
+        android:fontFamily="@font/poppins"
+        android:textSize="17dp"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintTop_toBottomOf="@id/join_team_title" />
+        app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
 
     <TextView
         android:id="@+id/team_code_title"
@@ -67,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Team Code"
+        android:fontFamily="@font/poppins"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMiddle"
@@ -76,8 +84,12 @@
     <EditText
         android:id="@+id/team_code"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="AD722"
+        android:layout_height="35dp"
+        android:paddingStart="10dp"
+        android:hint="Enter team code"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/guidelineMiddle" />
@@ -88,6 +100,8 @@
         android:layout_height="wrap_content"
         android:text="Don't have one? Ask your coach or teammate."
         android:textSize="12dp"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/team_code" />
 
@@ -97,6 +111,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:text="Continue"
+        android:backgroundTint="#007BFF"
+        android:textColor="@color/huddleWhite"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom" />

@@ -28,15 +28,15 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.45" />
 
-
     <TextView
         android:id="@+id/tvCreateAnnouncement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Announcement"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="32sp"
+        android:textColor="@color/huddleBlue"
+        android:fontFamily="@font/poppins"
         android:textStyle="bold"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@id/guideline_top"
         app:layout_constraintLeft_toRightOf="@id/guideline_left"
         app:layout_constraintRight_toLeftOf="@id/guideline_right" />
@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:hint="Type Announcement Here"
         android:inputType="textMultiLine"
+        android:background="@drawable/input_box_vector"
         android:lines="4"
         android:maxLines="6"
         android:scrollbars="vertical"
@@ -60,6 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Post Announcement"
+        android:backgroundTint="#007BFF"
+        android:textColor="@color/huddleWhite"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@id/guideline_left"

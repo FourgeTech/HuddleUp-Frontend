@@ -29,6 +29,7 @@
             android:layout_toEndOf="@id/imageViewIcon"
             android:textColor="@color/white"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins"
             android:text="Chat Name"
             android:textAppearance="?attr/textAppearanceListItem"/>
 
@@ -40,6 +41,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/textViewChatName"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins"
             android:text="Description"
             android:textSize="14sp"/>
     </RelativeLayout>
