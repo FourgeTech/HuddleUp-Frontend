@@ -17,8 +17,9 @@ import tech.fourge.huddleup_frontend.Helpers.UserHelper
 import tech.fourge.huddleup_frontend.Models.Settings
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
-
 import kotlin.math.log
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUserSettings
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUserUID
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

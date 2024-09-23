@@ -41,6 +41,7 @@ data class UserModel(
     var email: String,
     var role: String,
     var teamIds: List<String> = emptyList(),
+    var chatIds: List<String> = emptyList(),
     var profilePicUrl: String = "",
     var phoneNumber: String = "",
 ) {
@@ -53,6 +54,7 @@ data class UserModel(
             "email" to email,
             "role" to role,
             "teamIds" to teamIds,
+            "chatIds" to chatIds,
             "profilePicUrl" to profilePicUrl,
             "phoneNumber" to phoneNumber,
         )
@@ -68,6 +70,7 @@ data class UserModel(
                 email = map["email"] as? String ?: "",
                 role = map["role"] as? String ?: "",
                 teamIds = (map["teamIds"] as? List<*>)?.filterIsInstance<String>() ?: emptyList(),
+                chatIds = (map["chatIds"] as? List<*>)?.filterIsInstance<String>() ?: emptyList(),
                 profilePicUrl = map["profilePicUrl"] as? String ?: "",
                 phoneNumber = map["phoneNumber"] as? String ?: "",
             )

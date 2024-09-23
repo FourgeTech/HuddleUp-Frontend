@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import tech.fourge.huddleup_frontend.Utils.openIntent
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import tech.fourge.huddleup_frontend.Helpers.ChatHelper
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.databinding.HomePageBinding
 
@@ -17,6 +20,9 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomePage())
 
+//        lifecycleScope.launch {
+//            ChatHelper().newChat("Team Chat", "Team Chat", "Manager")
+//        }
         binding.bottomNavigationView.setOnItemSelectedListener {
 
             when (it.itemId) {
