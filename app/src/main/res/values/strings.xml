@@ -6,4 +6,12 @@
         <item>Team</item>
         <item>Manager</item>
     </string-array>
+    <string-array name="languages">
+        <item>Afrikaans</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
 </resources>
