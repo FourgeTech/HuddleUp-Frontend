@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="What is your team name?"
-        android:textSize="12dp"
+        android:textSize="13dp"
         android:fontFamily="@font/poppins"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/teamName" />
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Where is your team located?"
-        android:textSize="12dp"
+        android:textSize="13dp"
         android:fontFamily="@font/poppins"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/teamLocation" />
@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team league or division"
-        android:textSize="12dp"
+        android:textSize="13dp"
         android:fontFamily="@font/poppins"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/teamLeague" />

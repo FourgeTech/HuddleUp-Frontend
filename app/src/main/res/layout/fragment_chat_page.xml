@@ -23,6 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:text="New Chat"
+        android:backgroundTint="#007BFF"
+        android:textColor="@color/huddleWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />

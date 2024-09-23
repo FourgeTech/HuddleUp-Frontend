@@ -221,7 +221,7 @@
 
     <Button
         android:id="@+id/continue_button"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:text="Continue"
         android:backgroundTint="#007BFF"
@@ -244,7 +244,7 @@
 
     <Button
         android:id="@+id/continue_with_google_button"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:text="Continue With Google"
         android:backgroundTint="#007BFF"

@@ -54,7 +54,7 @@
         android:text="It's Time to Log In"
         android:fontFamily="@font/poppins"
         android:textStyle="bold"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
@@ -121,7 +121,7 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="0dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Log in"
@@ -133,12 +133,12 @@
 
     <Button
         android:id="@+id/continue_with_google_button"
-        android:layout_width="0dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:backgroundTint="#007BFF"
         android:text="Sign In With Google"
-        android:textColor="@color/black"
+        android:textColor="@color/huddleWhite"
         android:drawableStart="@drawable/google_icon"
         android:drawablePadding="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
