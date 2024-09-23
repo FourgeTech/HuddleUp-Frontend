@@ -1,23 +1,73 @@
 package tech.fourge.huddleup_frontend.Ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.databinding.CreateTeamPageBinding
+import tech.fourge.huddleup_frontend.Utils.ValidationUtils
+import tech.fourge.huddleup_frontend.Helpers.TeamHelper
+import tech.fourge.huddleup_frontend.Utils.ToastUtils
 import tech.fourge.huddleup_frontend.Utils.openIntent
 
 class CreateTeamActivity : AppCompatActivity() {
+    // Initialize variables
+    lateinit var binding: CreateTeamPageBinding
+    lateinit var teamName: String
+    lateinit var location: String
+    lateinit var league: String
+    val validationUtils = ValidationUtils()
+
+    // OnCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = CreateTeamPageBinding.inflate(layoutInflater)
+        binding = CreateTeamPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Open the CreateAccountActivity with the role set to "team"
-        binding.btnContinue.setOnClickListener{
-            // Pass data to the next activity
-            val data = Bundle().apply {
-                putString("role", "member")
+        // Handle Continue button click
+        binding.btnContinue.setOnClickListener {
+
+            // Check if form submission is valid
+            if (!handleFormSubmission()) {
+                return@setOnClickListener
             }
-            openIntent(this, CreateAccountActivity::class.java,data)
+
+            // If the form is valid, proceed with team creation
+            lifecycleScope.launch {
+                val result = TeamHelper().registerTeam(teamName, location, league)
+                if (result == "success") {
+                    Toast.makeText(this@CreateTeamActivity, ToastUtils.TEAM_CREATION_SUCCESS, Toast.LENGTH_SHORT).show()
+                    openIntent(this@CreateTeamActivity, HomeActivity::class.java, null, true)
+                } else {
+                    Toast.makeText(this@CreateTeamActivity, result, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+    }
+
+    // Handle form validation
+    private fun handleFormSubmission(): Boolean {
+        teamName = binding.teamName.text.toString().trim()
+        location = binding.teamLocation.text.toString().trim()
+        league = binding.teamLeague.text.toString().trim()
+
+        // Validate inputs
+        if (!validationUtils.isTeamNameValid(teamName)) {
+            binding.teamName.error = "Please enter a valid team name"
+            return false
+        }
+
+        if (!validationUtils.isTeamLocationValid(location)) {
+            binding.teamLocation.error = "Please enter a valid location"
+            return false
+        }
+
+        if (!validationUtils.isTeamLeagueValid(league)) {
+            binding.teamLeague.error = "Please enter a valid league"
+            return false
+        }
+
+        return true
     }
 }

@@ -2,25 +2,20 @@ package tech.fourge.huddleup_frontend.Ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import tech.fourge.huddleup_frontend.databinding.WelcomePageBinding
 import tech.fourge.huddleup_frontend.Utils.openIntent
+import tech.fourge.huddleup_frontend.databinding.JoinCreateTeamActivityBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: WelcomePageBinding
+class JoinCreateTeamActivity : AppCompatActivity() {
+    private lateinit var binding: JoinCreateTeamActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = WelcomePageBinding.inflate(layoutInflater)
+        binding = JoinCreateTeamActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Open the LoginActivity
-        binding.loginButton.setOnClickListener{
-            openIntent(this, LoginActivity::class.java)
-        }
 
         // Open the CreateTeamActivity
         binding.createTeamButton.setOnClickListener{
-            openIntent(this, CreateAccountActivity::class.java)
+            openIntent(this, CreateTeamActivity::class.java)
         }
 
         // Open the JoinTeamActivity
