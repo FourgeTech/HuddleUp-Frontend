@@ -38,7 +38,7 @@ class CreateTeamActivity : AppCompatActivity() {
                 val result = TeamHelper().registerTeam(teamName, location, league)
                 if (result == "success") {
                     Toast.makeText(this@CreateTeamActivity, ToastUtils.TEAM_CREATION_SUCCESS, Toast.LENGTH_SHORT).show()
-                    openIntent(this@CreateTeamActivity, HomeActivity::class.java, null, true)
+                    openIntent(this@CreateTeamActivity, HomePage::class.java, null, true)
                 } else {
                     Toast.makeText(this@CreateTeamActivity, result, Toast.LENGTH_SHORT).show()
                 }

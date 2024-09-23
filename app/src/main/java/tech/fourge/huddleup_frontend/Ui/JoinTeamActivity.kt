@@ -16,7 +16,7 @@ class JoinTeamActivity : AppCompatActivity() {
 
         // Open the CreateAccountActivity
         binding.continueButton.setOnClickListener{
-            openIntent(this, CreateAccountActivity::class.java)
+            openIntent(this, HomePage::class.java)
         }
     }
 }
