@@ -8,13 +8,18 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="384dp"
+        android:layout_height="54dp"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppins"
         android:text="Create Team"
-        android:textSize="32dp"
+        android:textColor="@color/huddleBlue"
+        android:textStyle="bold"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintBottom_toTopOf="@id/guideline3" />
 
     <TextView
         android:id="@+id/textView3"
@@ -22,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="It's Time to Create the Dream \n                     Team"
-
+        android:fontFamily="@font/poppins"
         android:textSize="18dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -40,8 +45,12 @@
     <EditText
         android:id="@+id/teamName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:paddingStart="10dp"
         android:text="Tigers"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
@@ -89,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
