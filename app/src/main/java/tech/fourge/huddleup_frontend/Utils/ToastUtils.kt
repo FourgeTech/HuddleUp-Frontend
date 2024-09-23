@@ -1,6 +1,7 @@
 package tech.fourge.huddleup_frontend.Utils
 
 object ToastUtils {
+    const val TEAM_CREATION_SUCCESS = "Team Creation Successful"
     const val EMPTY_FIELDS_ERROR = "Please fill out all fields"
     const val INVALID_EMAIL_ERROR = "Invalid email"
     const val INVALID_PASSWORD_ERROR = "Invalid password"
