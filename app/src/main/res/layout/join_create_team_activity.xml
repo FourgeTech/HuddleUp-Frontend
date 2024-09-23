@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ui.MainActivity">
+    tools:context=".Ui.JoinCreateTeamActivity">
 
     <TextView
         android:id="@+id/huddleup"
@@ -33,22 +33,24 @@
         app:layout_constraintTop_toBottomOf="@+id/huddleup" />
 
     <Button
-        android:id="@+id/login_button"
-        android:layout_width="270dp"
+        android:id="@+id/create_team_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalGuidelineBottom"
-        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft" />
+        android:layout_marginEnd="5dp"
+        android:text="Create Team"
+        app:layout_constraintEnd_toStartOf="@+id/center_guildeline"
+        tools:layout_editor_absoluteY="562dp" />
 
     <Button
-        android:id="@+id/create_account_button"
-        android:layout_width="270dp"
+        android:id="@+id/join_team_button"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:text="Create Account"
-        app:layout_constraintBottom_toTopOf="@+id/login_button"
-        app:layout_constraintEnd_toStartOf="@+id/verticalGuidelineRight"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuidelineLeft" />
+        android:layout_marginStart="5dp"
+        android:text="Join Team"
+        app:layout_constraintStart_toStartOf="@+id/center_guildeline"
+        tools:layout_editor_absoluteY="562dp" />
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuidelineLeft"

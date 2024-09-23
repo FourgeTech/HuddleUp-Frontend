@@ -50,7 +50,7 @@ class CreateAccountActivity : AppCompatActivity() {
                     // If the user is successfully registered, open the HomeActivity
                     UserHelper().signIn(email, password)
                     Toast.makeText(this@CreateAccountActivity, ToastUtils.REGISTRATION_SUCCESS, Toast.LENGTH_SHORT).show()
-                    openIntent(this@CreateAccountActivity, HomeActivity::class.java, null, true)
+                    openIntent(this@CreateAccountActivity, JoinCreateTeamActivity::class.java, null, true)
                 } else {
                     // If the user is not successfully registered, display an error message
                     Toast.makeText(this@CreateAccountActivity, result, Toast.LENGTH_SHORT).show()

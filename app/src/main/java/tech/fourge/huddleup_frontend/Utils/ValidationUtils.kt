@@ -2,6 +2,27 @@ package tech.fourge.huddleup_frontend.Utils
 
 class ValidationUtils {
 
+    // Validate team name
+    fun isTeamNameValid(teamName: String): Boolean {
+        return if (teamName.isEmpty()) {
+            false
+        } else teamName.length >= 3 // Check if team name has at least 3 characters
+    }
+
+    // Validate team location
+    fun isTeamLocationValid(teamLocation: String): Boolean {
+        return if (teamLocation.isEmpty()) {
+            false
+        } else teamLocation.length >= 3 // Check if location has at least 3 characters
+    }
+
+    // Validate team league
+    fun isTeamLeagueValid(teamLeague: String): Boolean {
+        return if (teamLeague.isEmpty()) {
+            false
+        } else teamLeague.length >= 3 // Check if league has at least 3 characters
+    }
+
     // Validates email format
     fun isValidEmail(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()

@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = WelcomePageBinding.inflate(layoutInflater)
+        binding = WelcomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Open the LoginActivity
@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
             openIntent(this, LoginActivity::class.java)
         }
 
-        // Open the CreateTeamActivity
-        binding.createTeamButton.setOnClickListener{
-            openIntent(this, CreateTeamActivity::class.java)
+        // Open the CreateAccountActivity
+        binding.createAccountButton.setOnClickListener{
+            openIntent(this, CreateAccountActivity::class.java)
         }
     }
 }
