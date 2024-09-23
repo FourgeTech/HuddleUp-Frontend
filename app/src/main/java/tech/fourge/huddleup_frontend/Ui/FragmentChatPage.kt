@@ -130,7 +130,7 @@ class FragmentChatPage : Fragment() {
         adapter = ChatGroupAdapter(chatsList,object : ChatGroupAdapter.OnItemClickListener {
             override fun onItemClick(chat: ChatGroupModel) {
                 parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, FragmentChatMessages.newInstance(chat.chatId))
+                    .replace(R.id.fragment_container, FragmentChatMessages.newInstance(chat.chatId, chat.chatName, chat.members.size))
                     .addToBackStack(null)
                     .commit()
             }

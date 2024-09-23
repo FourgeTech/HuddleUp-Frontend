@@ -16,6 +16,7 @@ import tech.fourge.huddleup_frontend.Helpers.UserHelper
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 import tech.fourge.huddleup_frontend.Ui.FragmentSettingsPage
+import tech.fourge.huddleup_frontend.Utils.openIntent
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +59,10 @@ class FragmentProfilePage : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-
+        view.findViewById<LinearLayout>(R.id.logout_item).setOnClickListener() {
+            auth.signOut()
+            openIntent(requireActivity(), MainActivity::class.java,null,true)
+        }
         val editSettingsButton: LinearLayout = view.findViewById(R.id.settings_item)
         editSettingsButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
