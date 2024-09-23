@@ -18,6 +18,9 @@
             android:name=".Ui.JoinCreateTeamActivity"
             android:exported="false" />
         <activity
+            android:name=".Ui.JoinTeamActivity"
+            android:exported="false" />
+        <activity
             android:name=".Ui.SettingsActivity"
             android:exported="false" />
         <activity

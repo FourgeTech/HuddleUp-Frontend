@@ -112,6 +112,37 @@ class TeamHelper {
         return List(6) { charset.random() }.joinToString("")
     }
 
+    // Join a team by the generated team code
+    suspend fun joinTeamByCode(teamCode: String): String {
+        val currentUserId = auth.currentUser?.uid ?: return "not_authenticated"
+
+        return try {
+            // Call the Firebase Function to join the team using the team code
+            val result = functions.getHttpsCallable("joinTeamByCode").call(mapOf(
+                "teamCode" to teamCode,
+                "userId" to currentUserId
+            )).await()
+
+            val resultData = result.data as? Map<*, *>
+            val status = resultData?.get("status") as? String
+            val message = resultData?.get("message") as? String
+            Log.d(TAG, status.toString())
+
+            if (status == "success") {
+                "success"
+            } else {
+                message ?: "unknown_error"
+            }
+        } catch (e: FirebaseFunctionsException) {
+            Log.w(TAG, "Failed to join team", e)
+            return "functions_error"
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to join team", e)
+            return "unknown_error"
+        }
+    }
+
+
     companion object {
         private const val TAG = "TeamHelper"
     }
