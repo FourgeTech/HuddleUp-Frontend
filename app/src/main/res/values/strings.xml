@@ -1,9 +1,17 @@
 <resources>
-    <string name="app_name">HuddleUp-Frontend</string>
+    <string name="app_name">HuddleUp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="chat_types">
         <item>Team</item>
         <item>Manager</item>
+    </string-array>
+    <string-array name="languages">
+        <item>Afrikaans</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Light</item>
+        <item>Dark</item>
     </string-array>
 </resources>

@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <!-- Title for Announcements -->
     <TextView
@@ -34,23 +34,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Announcements"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="32sp"
+        android:textColor="@color/huddleBlue"
+        android:fontFamily="@font/poppins"
         android:textStyle="bold"
+        android:textSize="32sp"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline_top"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintEnd_toEndOf="@+id/guideline_right" />
+        app:layout_constraintEnd_toEndOf="@+id/guideline_right"
+        tools:ignore="NotSibling" />
 
     <Button
         android:id="@+id/btnAddAnnouncement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Annoucement"
+        android:text="Create Announcement"
+        android:backgroundTint="#007BFF"
+        android:textColor="@color/huddleWhite"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/tvAnnouncements" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
     <!-- RecyclerView for dynamic content -->
     <androidx.recyclerview.widget.RecyclerView

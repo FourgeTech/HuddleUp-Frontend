@@ -27,6 +27,7 @@
         android:textStyle="bold"
         android:layout_marginStart="15dp"
         android:textSize="18sp"
+        android:fontFamily="@font/poppins"
         android:layout_toEndOf="@id/imgProfile"
         android:layout_alignTop="@id/imgProfile"
         android:layout_alignParentEnd="true" />
@@ -38,6 +39,7 @@
         android:layout_height="wrap_content"
         android:text="7min"
         android:textSize="11sp"
+        android:fontFamily="@font/poppins"
         android:textColor="#808080"
         android:layout_toEndOf="@id/imgProfile"
         android:layout_marginStart="15dp"
@@ -50,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:fontFamily="@font/poppins"
         android:layout_marginTop="8dp"
         android:text="Practice Rescheduled for 5PM"
         android:layout_below="@id/imgProfile"

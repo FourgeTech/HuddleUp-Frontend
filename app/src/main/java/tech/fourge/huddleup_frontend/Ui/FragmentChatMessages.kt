@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +25,8 @@ import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 private const val ARG_CHAT_ID = "chatId"
+private const val ARG_CHAT_NAME = "chatName"
+private const val ARG_CHAT_MEMBER_COUNT = "chatMemberCount"
 
 /**
  * A simple [Fragment] subclass.
@@ -35,11 +39,15 @@ class FragmentChatMessages : Fragment() {
     private lateinit var adapter: ChatAdapter
     private var messageList: List<Message> = listOf()
     private lateinit var chatId: String
+    private lateinit var chatName: String
+    private var chatMemberCount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             chatId = it.getString(ARG_CHAT_ID) ?: ""
+            chatName = it.getString(ARG_CHAT_NAME) ?: ""
+            chatMemberCount = it.getInt(ARG_CHAT_MEMBER_COUNT) ?: 0
         }
     }
 
@@ -56,6 +64,16 @@ class FragmentChatMessages : Fragment() {
             updateRecyclerView()
         }
 
+        view.findViewById<TextView>(R.id.chatName).text = chatName
+
+
+        view.findViewById<Button>(R.id.buttonRefresh).setOnClickListener {
+            lifecycleScope.launch {
+                val result  = ChatHelper().loadMessages(chatId)
+                messageList = result
+                updateRecyclerView()
+            }
+        }
 
         view.findViewById<ImageButton>(R.id.buttonSend).setOnClickListener {
 
@@ -115,10 +133,12 @@ class FragmentChatMessages : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(chatId: String) =
+        fun newInstance(chatId: String, chatName: String, chatMemberCount: Int) =
             FragmentChatMessages().apply {
                 arguments = Bundle().apply {
                     putString(ARG_CHAT_ID, chatId)
+                    putString(ARG_CHAT_NAME, chatName)
+                    putInt(ARG_CHAT_MEMBER_COUNT, chatMemberCount)
                 }
             }
     }

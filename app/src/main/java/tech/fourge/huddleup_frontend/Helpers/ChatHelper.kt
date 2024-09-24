@@ -13,7 +13,7 @@ class ChatHelper {
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
-        functions.useEmulator("10.0.2.2", 5001)
+//        functions.useEmulator("10.0.2.2", 5001)
     }
 
     // Function to update settings

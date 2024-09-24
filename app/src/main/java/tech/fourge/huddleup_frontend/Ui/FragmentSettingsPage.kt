@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Switch
 import android.widget.ToggleButton
 import androidx.lifecycle.lifecycleScope
@@ -55,14 +57,49 @@ class FragmentSettingsPage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        this.context?.let {
+
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.themes, // Assume you've defined this array in your strings.xml
+                android.R.layout.simple_spinner_dropdown_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                view.findViewById<Spinner>(R.id.editTheme).adapter = adapter
+            }
+
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.languages, // Assume you've defined this array in your strings.xml
+                android.R.layout.simple_spinner_dropdown_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                view.findViewById<Spinner>(R.id.editLanguage).adapter = adapter
+            }
+        }
+
         // Load settings from Firestore
         lifecycleScope.launch {
             val settings = UserHelper().getSettings(CurrentUserUtil.currentUserUID)
             Log.d("SettingsLoad", "Settings: $settings")
             if (settings != null) {
                 // Update UI with fetched settings
-                view.findViewById<EditText>(R.id.editTheme).setHint(settings.theme)
-                view.findViewById<EditText>(R.id.editLanguage).setHint(settings.preferredLanguage)
+                // Get the array of themes and languages
+                val themesArray = resources.getStringArray(R.array.themes)
+                val languagesArray = resources.getStringArray(R.array.languages)
+
+                // Get the index of the theme and language from the settings
+                val themeIndex = themesArray.indexOf(settings.theme)
+                val languageIndex = languagesArray.indexOf(settings.preferredLanguage)
+
+                // Safely set the spinner selections if the index is valid (i.e., not -1)
+                if (themeIndex >= 0) {
+                    view.findViewById<Spinner>(R.id.editTheme).setSelection(themeIndex)
+                }
+
+                if (languageIndex >= 0) {
+                    view.findViewById<Spinner>(R.id.editLanguage).setSelection(languageIndex)
+                }
                 view.findViewById<Switch>(R.id.matchAlertsSwitch).isChecked = settings.matchAlerts
                 view.findViewById<Switch>(R.id.practiceAlertsSwitch).isChecked = settings.practiceAlerts
                 view.findViewById<Switch>(R.id.chatNotificationsSwitch).isChecked = settings.chatNotifications
@@ -77,8 +114,8 @@ class FragmentSettingsPage : Fragment() {
             val matchAlerts = view.findViewById<Switch>(R.id.matchAlertsSwitch).isChecked
             val practiceAlerts = view.findViewById<Switch>(R.id.practiceAlertsSwitch).isChecked
             val chatNotifications = view.findViewById<Switch>(R.id.chatNotificationsSwitch).isChecked
-            val editTheme = view.findViewById<EditText>(R.id.editTheme).text.toString()
-            val editLanguage = view.findViewById<EditText>(R.id.editLanguage).text.toString()
+            val editTheme = view.findViewById<Spinner>(R.id.editTheme).selectedItem.toString()
+            val editLanguage = view.findViewById<Spinner>(R.id.editLanguage).selectedItem.toString()
 
             if (editLanguage.isNotEmpty()) {
                 CurrentUserUtil.currentUserSettings.preferredLanguage = editLanguage
