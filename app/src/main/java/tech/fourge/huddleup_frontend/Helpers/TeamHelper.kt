@@ -50,9 +50,10 @@ class TeamHelper {
             val resultData = result.data as? Map<*, *>
             val status = resultData?.get("status") as? String
             val message = resultData?.get("message") as? String
+            val teamCode = resultData?.get("teamCode") as? String
 
             if (status == "success") {
-                "success"
+                teamCode ?: "unknown_error"
             } else {
                 message ?: "unknown_error"
             }
