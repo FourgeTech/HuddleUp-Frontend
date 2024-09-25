@@ -52,7 +52,7 @@ class GoogleAuthActivity : AppCompatActivity() {
 
                 if (action == "login") {
                     lifecycleScope.launch {
-                        if (!UserHelper().checkIfUserExistsWithGoogleAccount(googleSignInAccount)) {
+                        if (UserHelper().checkIfUserExistsWithGoogleAccount(googleSignInAccount)) {
                             createAccountWithGoogle(googleSignInAccount)
                         } else {
                             Toast.makeText(this@GoogleAuthActivity, ToastUtils.ACCOUNT_DOES_NOT_EXIST_ERROR, Toast.LENGTH_SHORT).show()

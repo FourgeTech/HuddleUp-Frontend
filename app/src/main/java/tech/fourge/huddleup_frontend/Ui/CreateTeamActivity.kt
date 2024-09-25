@@ -1,6 +1,8 @@
 package tech.fourge.huddleup_frontend.Ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -36,9 +38,12 @@ class CreateTeamActivity : AppCompatActivity() {
             // If the form is valid, proceed with team creation
             lifecycleScope.launch {
                 val result = TeamHelper().registerTeam(teamName, location, league)
-                if (result == "success") {
+                if (result != "unknown_error") {
+                    val intent = Intent(this@CreateTeamActivity, InvitePlayerActivity::class.java)
                     Toast.makeText(this@CreateTeamActivity, ToastUtils.TEAM_CREATION_SUCCESS, Toast.LENGTH_SHORT).show()
-                    openIntent(this@CreateTeamActivity, HomeActivity::class.java)
+                    intent.putExtra("teamCode", result)
+                    startActivity(intent)
+                    Log.d("TeamCode", result)
                 } else {
                     Toast.makeText(this@CreateTeamActivity, result, Toast.LENGTH_SHORT).show()
                 }
