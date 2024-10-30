@@ -103,4 +103,9 @@
     <string name="or_title">または</string>
     <string name="username_hint">ユーザー名</string>
     <string name="email_title">メール</string>
+    <string name="locker_room">ロッカールーム</string>
+    <string name="team">チーム</string>
+    <string name="attendance_schedule">出席スケジュール</string>
+    <string name="chat">チャット</string>
+    <string name="profile">プロフィール</string>
 </resources>

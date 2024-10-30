@@ -92,5 +92,9 @@
     <string name="confirm_password_hint">Bevestig wagwoord</string>
     <string name="or_title">Of</string>
     <string name="continue_with_google_button">Gaan voort Met Google</string>
-
+    <string name="locker_room">Kleedkamer</string>
+    <string name="team">Span</string>
+    <string name="attendance_schedule">Bywoningskedule</string>
+    <string name="chat">Klets</string>
+    <string name="profile">Profiel</string>
 </resources>

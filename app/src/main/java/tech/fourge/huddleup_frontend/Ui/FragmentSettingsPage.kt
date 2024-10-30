@@ -129,6 +129,17 @@ class FragmentSettingsPage : Fragment() {
             CurrentUserUtil.currentUserSettings.practiceAlerts = practiceAlerts
             CurrentUserUtil.currentUserSettings.chatNotifications = chatNotifications
 
+            // Update the locale
+            val languageCode = when (editLanguage) {
+                "Afrikaans" -> "af"
+                "Japanese" -> "ja"
+                else -> "en"
+            }
+            context?.let { ctx ->
+                CurrentUserUtil.updateLocale(ctx, languageCode)
+                // Restart the activity to apply the new locale
+                activity?.recreate()
+            }
 
             lifecycleScope.launch {
                 // Update the settings in Firestore

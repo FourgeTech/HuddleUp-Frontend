@@ -1,12 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">HuddleUp</string>
     <string-array name="chat_types">
         <item>Team</item>
         <item>Manager</item>
     </string-array>
-    <string-array name="languages">
+    <string-array name="languages" tools:ignore="InconsistentArrays">
         <item>Afrikaans</item>
         <item>English</item>
+        <item>Japanese</item>
     </string-array>
     <string-array name="themes">
         <item>Light</item>
@@ -103,4 +104,9 @@
     <string name="confirm_password_hint">Confirm password</string>
     <string name="or_title">Or</string>
     <string name="continue_with_google_button">Continue With Google</string>
+    <string name="locker_room">Locker Room</string>
+    <string name="team">Team</string>
+    <string name="attendance_schedule">Attendance Schedule</string>
+    <string name="chat">Chat</string>
+    <string name="profile">Profile</string>
 </resources>
