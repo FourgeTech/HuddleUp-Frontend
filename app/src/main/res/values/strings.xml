@@ -28,12 +28,10 @@
     <string name="login_subtitle">It\'s Time to Log In</string>
     <string name="email_label">Email:</string>
     <string name="password_label">Password:</string>
-    <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="login_button">Log in</string>
     <string name="google_sign_in">Sign In With Google</string>
-    <string name="team_name_label">Team Name</string>
     <string name="team_name_hint">Enter team name</string>
     <string name="chat_type_label">Chat Type</string>
     <string name="team_description_label">Team Description</string>
@@ -60,7 +58,6 @@
     <string name="share_text">Nice Work! \nNow, let’s add your team</string>
     <string name="copy_link_button">Copy Link</string>
     <string name="settings_title">Settings</string>
-    <string name="save_button">Save</string>
     <string name="cancel_button">Cancel</string>
     <string name="profile_name">Michael Smith</string>
     <string name="edit_profile_button">Edit Profile</string>
@@ -70,26 +67,21 @@
     <string name="create_announcement_button">Create Announcement</string>
     <string name="edit_profile_title">Edit Profile</string>
     <string name="first_name_title">First Name</string>
-    <string name="last_name_title">Last Name</string>
     <string name="phonenumber_title">Phone Number</string>
-    <string name="username_title">Username</string>
     <string name="save_button">Save</string>
     <string name="create_announcement_title">Create Announcement</string>
     <string name="announcement_hint">Type Announcement Here</string>
     <string name="post_announcement_button">Post Announcement</string>
     <string name="chats_title">Chats</string>
     <string name="new_chat_button">New Chat</string>
-    <string name="chat_name">Chat Name</string>
     <string name="refresh_button">Refresh</string>
     <string name="message_hint">Type a message</string>
     <string name="forgot_password_title">Forgot Password</string>
     <string name="forgot_password_description">Please enter your email to reset the password</string>
-    <string name="email_hint">Enter your email</string>
     <string name="reset_password_button">Reset Password</string>
     <string name="create_team_title">Create Team</string>
-    <string name="create_team_subtitle">It's Time to Create the Dream \n                     Team</string>
+    <string name="create_team_subtitle">It\'s Time to Create the Dream Team</string>
     <string name="team_name_label">Team Name:</string>
-    <string name="team_name_hint">Team name</string>
     <string name="team_name_description">What is your team name?</string>
     <string name="location_label">Location:</string>
     <string name="location_hint">Location</string>
@@ -97,7 +89,6 @@
     <string name="league_label">League:</string>
     <string name="league_hint">League</string>
     <string name="league_description">Team league or division</string>
-    <string name="continue_button">Continue</string>
     <string name="create_account_title">Create Account</string>
     <string name="create_account_subtitle">Lets Get You Set Up Success</string>
     <string name="first_name_hint">First name</string>
@@ -108,10 +99,8 @@
     <string name="email_title">Email</string>
     <string name="email_hint">Email</string>
     <string name="password_title">Password</string>
-    <string name="password_hint">Password</string>
     <string name="confirm_password_title">Confirm Password</string>
     <string name="confirm_password_hint">Confirm password</string>
-    <string name="continue_button">Continue</string>
     <string name="or_title">Or</string>
     <string name="continue_with_google_button">Continue With Google</string>
 </resources>

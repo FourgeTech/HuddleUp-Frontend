@@ -97,4 +97,10 @@
     <string name="first_name_hint">名前</string>
     <string name="last_name_hint">苗字</string>
     <string name="continue_with_google_button">Googleで続行</string>
+    <string name="password_title">パスワード</string>
+    <string name="confirm_password_title">パスワードの確認</string>
+    <string name="confirm_password_hint">パスワードを確認</string>
+    <string name="or_title">または</string>
+    <string name="username_hint">ユーザー名</string>
+    <string name="email_title">メール</string>
 </resources>
