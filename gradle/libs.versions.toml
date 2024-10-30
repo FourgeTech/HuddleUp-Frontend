@@ -14,6 +14,7 @@ firebaseFunctionsKtx = "21.0.0"
 material3Android = "1.3.0"
 firebaseFirestoreKtx = "25.1.0"
 biometricKtx = "1.1.0"
+securityCryptoKtx = "1.0.0"
 
 [libraries]
 androidx-biometirc = { module = "androidx.biometric:biometirc", version.ref = "biometricKtx" }
@@ -30,6 +31,7 @@ firebase-functions-ktx = { group = "com.google.firebase", name = "firebase-funct
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 androidx-biometric-ktx = { group = "androidx.biometric", name = "biometric-ktx", version.ref = "biometricKtx" }
+androidx-security-crypto-ktx = { group = "androidx.security", name = "security-crypto-ktx", version.ref = "securityCryptoKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
