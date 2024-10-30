@@ -1,3 +1,5 @@
+package tech.fourge.huddleup_frontend.Ui
+
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
