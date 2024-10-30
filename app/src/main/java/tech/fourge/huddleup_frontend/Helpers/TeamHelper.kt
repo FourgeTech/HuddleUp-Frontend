@@ -8,6 +8,7 @@ import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.functions
 import kotlinx.coroutines.tasks.await
 import tech.fourge.huddleup_frontend.Models.Team
+import tech.fourge.huddleup_frontend.Models.UserModel
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 
 class TeamHelper {
@@ -92,7 +93,9 @@ class TeamHelper {
     suspend fun getTeam(teamId: String): Team? {
         return try {
             val result = functions.getHttpsCallable("getTeam").call(mapOf("teamId" to teamId)).await()
+            Log.d("Result", result.data.toString())
             val data = result.data as? Map<String, Any>
+            Log.d("Data", data.toString())
             data?.let {
                 Team.fromMap(it)
             }
@@ -140,6 +143,38 @@ class TeamHelper {
         } catch (e: Exception) {
             Log.w(TAG, "Failed to join team", e)
             return "unknown_error"
+        }
+    }
+
+    // Fetch team details and return a list of players' full names
+    suspend fun getTeamPlayerNames(teamId: String): List<String> {
+        return try {
+            val result = functions.getHttpsCallable("getTeam").call(mapOf("teamId" to teamId)).await()
+            Log.d("Result", result.data.toString())
+            val data = result.data as? Map<String, Any>
+            Log.d("Data", data.toString())
+            val players = data?.get("players") as? List<String> ?: emptyList()
+
+            // Fetch user details for each player and get their full names
+            val playerNames = players.mapNotNull { playerId ->
+                val user = getUser(playerId)
+                user?.let { "${it.firstname} ${it.lastname}" }
+            }
+            playerNames
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get team", e)
+            emptyList()
+        }
+    }
+
+    private suspend fun getUser(userId: String): UserModel? {
+        return try {
+            val result = functions.getHttpsCallable("getUser").call(mapOf("uid" to userId)).await()
+            val data = result.data as? Map<String, Any>
+            data?.let { UserModel.fromMap(it) }
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get user", e)
+            null
         }
     }
 

@@ -5,7 +5,7 @@ import tech.fourge.huddleup_frontend.Models.UserModel
 
 class CurrentUserUtil {
     companion object {
-        var currentUser: UserModel = UserModel("", "", "", "", "")
+        var currentUser: UserModel = UserModel("", "", "", "", "", emptyList())
         var currentUserUID: String = ""
         var currentUserSettings: Settings = Settings(
             matchAlerts = true,

@@ -1,19 +1,276 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Ui.FragmentTeamPage">
 
+    <!-- Background Field Image -->
+
+    <!-- Player Icons -->
+    <!-- Adjust the constraints to place each icon at specific positions on the field -->
+
+
     <ImageView
-        android:id="@+id/teamImageView"
+        android:id="@+id/fieldImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/team_view"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
+        android:src="@drawable/field_image_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+    <ImageView
+        android:id="@+id/loose_head_prop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="74dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/hooker"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="74dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tight_head_prop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="318dp"
+        android:layout_marginTop="74dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/lock_one"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="164dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/lock_two"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="164dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/blindside_flanker"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="304dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/number_eight"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="304dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/open_side_flanker"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="316dp"
+        android:layout_marginTop="304dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/scrum_half"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="404dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/flyhalf"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="436dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/inside_centre"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="460dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/outside_centre"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="460dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/left_wing"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="564dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/right_wing"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="316dp"
+        android:layout_marginTop="564dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fullback"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="584dp"
+        android:src="@drawable/ic_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    <!-- FrameLayout for Bench Button Overlay on Bench ScrollView -->
+    <!-- FrameLayout for Bench Button Overlay on Bench ScrollView -->
+
+        <!-- Bench Horizontal ScrollView -->
+    <HorizontalScrollView
+        android:id="@+id/benchScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:visibility="gone"
+        android:background="#BF000000"
+        android:animateLayoutChanges="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Bench Slots -->
+                <ImageView
+                    android:id="@+id/benchSlot1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/benchSlot2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/benchSlot3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/benchSlot4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/benchSlot5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/benchSlot6"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/benchSlot7"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/benchSlot18"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_player"
+                    android:layout_margin="8dp" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    <!-- Bench Button positioned on top right corner above the ScrollView -->
+    <ImageView
+        android:id="@+id/benchButton"
+        android:layout_width="69dp"
+        android:maxHeight="38dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bench_icon"
+        android:contentDescription="Bench Button"
+        app:layout_constraintBottom_toTopOf="@id/benchScrollView"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
