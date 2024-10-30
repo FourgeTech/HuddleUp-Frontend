@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">HuddleUp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="chat_types">
         <item>Team</item>
         <item>Manager</item>
@@ -14,4 +12,52 @@
         <item>Light</item>
         <item>Dark</item>
     </string-array>
+    <string name="huddleup">HuddleUp</string>
+    <string name="motto">Your Game Plan for Team \nSuccess</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="settings">Settings</string>
+    <string name="name_hint">Name</string>
+    <string name="surname_hint">Surname</string>
+    <string name="profile_picture_hint">Profile Picture URL</string>
+    <string name="practice_alerts">Practice Alerts</string>
+    <string name="match_alerts">Match Alerts</string>
+    <string name="chat_notifications">Chat Notifications</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="login_subtitle">It\'s Time to Log In</string>
+    <string name="email_label">Email:</string>
+    <string name="password_label">Password:</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_button">Log in</string>
+    <string name="google_sign_in">Sign In With Google</string>
+    <string name="team_name_label">Team Name</string>
+    <string name="team_name_hint">Enter team name</string>
+    <string name="chat_type_label">Chat Type</string>
+    <string name="team_description_label">Team Description</string>
+    <string name="team_description_hint">Enter team description</string>
+    <string name="join_team_title">Join a Team</string>
+    <string name="join_team_description">It\'s time to Join the Dream Team</string>
+    <string name="team_code_title">Team Code</string>
+    <string name="team_code_hint">Enter team code</string>
+    <string name="no_team_code">Don\'t have one? Ask your coach or teammate.</string>
+    <string name="continue_button">Continue</string>
+    <string name="create_team_button">Create Team</string>
+    <string name="join_team_button">Join Team</string>
+    <string name="sender">Sender</string>
+    <string name="message_content">Message Content</string>
+    <string name="timestamp">Timestamp</string>
+    <string name="chat_name">Chat Name</string>
+    <string name="chat_description">Description</string>
+    <string name="name">Aidan Smith</string>
+    <string name="time">7min</string>
+    <string name="announcement_text">Practice Rescheduled for 5PM</string>
+    <string name="views">3 / 10</string>
+    <string name="invite_players_title">Invite Players</string>
+    <string name="invite_players_motto">Its Time to Invite the Star \nPlayers</string>
+    <string name="share_text">Nice Work! \nNow, let’s add your team</string>
+    <string name="copy_link_button">Copy Link</string>
+    <string name="continue_button">Continue</string>
 </resources>
