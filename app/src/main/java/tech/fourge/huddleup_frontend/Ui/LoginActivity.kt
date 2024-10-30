@@ -1,3 +1,5 @@
+package tech.fourge.huddleup_frontend.Ui
+
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle

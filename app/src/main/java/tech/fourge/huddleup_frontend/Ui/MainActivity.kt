@@ -1,5 +1,6 @@
 package tech.fourge.huddleup_frontend.Ui
 
+import tech.fourge.huddleup_frontend.Ui.LoginActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import tech.fourge.huddleup_frontend.databinding.WelcomePageBinding
