@@ -68,6 +68,7 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:21.2.0")
     implementation(libs.androidx.material3.android)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.androidx.biometric.ktx)
     testImplementation ("junit:junit:4.13.2")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2")
     implementation(libs.androidx.core.ktx)
@@ -79,4 +80,5 @@ dependencies {
     implementation(libs.firebase.functions.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    implementation ("androidx.biometric:biometric:1.2.0-alpha05")
 }

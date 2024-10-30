@@ -13,8 +13,10 @@ uiTestAndroid = "1.7.1"
 firebaseFunctionsKtx = "21.0.0"
 material3Android = "1.3.0"
 firebaseFirestoreKtx = "25.1.0"
+biometricKtx = "1.1.0"
 
 [libraries]
+androidx-biometirc = { module = "androidx.biometric:biometirc", version.ref = "biometricKtx" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -27,6 +29,7 @@ androidx-ui-test-android = { group = "androidx.compose.ui", name = "ui-test-andr
 firebase-functions-ktx = { group = "com.google.firebase", name = "firebase-functions-ktx", version.ref = "firebaseFunctionsKtx" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+androidx-biometric-ktx = { group = "androidx.biometric", name = "biometric-ktx", version.ref = "biometricKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
