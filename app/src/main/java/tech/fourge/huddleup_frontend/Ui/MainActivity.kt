@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import tech.fourge.huddleup_frontend.databinding.WelcomePageBinding
 import tech.fourge.huddleup_frontend.Utils.openIntent
 import com.google.firebase.messaging.FirebaseMessaging
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: WelcomePageBinding
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             }
             val token = task.result
             Log.d("MainActivity","FCM Token: $token")
-            // Send this token to your app server if needed
+            CurrentUserUtil.fcmToken = token
         }
 
         // Open the LoginActivity
