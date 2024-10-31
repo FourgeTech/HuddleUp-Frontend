@@ -141,7 +141,6 @@ class FragmentTeamPage : Fragment() {
                 .show()
         } else {
             return
-
         }
     }
 
@@ -198,7 +197,10 @@ class FragmentTeamPage : Fragment() {
 
         textViewId?.let {
             val textView = view?.findViewById<TextView>(it)
-            textView?.text = playerName
+            val nameParts = playerName.split(" ")
+            val firstName = nameParts.getOrNull(0) ?: ""
+            val surname = nameParts.getOrNull(1) ?: ""
+            textView?.text = "$firstName\n$surname"
         }
     }
 
@@ -225,7 +227,7 @@ class FragmentTeamPage : Fragment() {
         // Set visibility after animation
         benchScrollView.postDelayed({
             benchScrollView.visibility = if (isBenchVisible) View.VISIBLE else View.GONE
+            benchButton.visibility = View.VISIBLE // Ensure the button is visible after the animation
         }, 300)
     }
-
 }
