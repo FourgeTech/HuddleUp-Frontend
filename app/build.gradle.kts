@@ -6,6 +6,7 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+
 android {
     namespace = "tech.fourge.huddleup_frontend"
     compileSdk = 34
@@ -81,6 +82,6 @@ dependencies {
     implementation(libs.firebase.functions.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    implementation ("androidx.biometric:biometric:1.2.0-alpha05")
-    implementation ("androidx.security:security-crypto:1.1.0-alpha05")
+    implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
+    implementation("androidx.security:security-crypto-ktx:1.1.0-alpha06")
 }
