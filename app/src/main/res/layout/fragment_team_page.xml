@@ -28,6 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="24dp"
+        android:padding="3dp"
         android:layout_marginTop="74dp">
         <ImageView
             android:id="@+id/loose_head_prop"
@@ -39,7 +40,12 @@
             android:id="@+id/loose_head_prop_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Loose Head Prop"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -50,6 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="188dp"
+        android:padding="3dp"
         android:layout_marginTop="74dp">
         <ImageView
             android:id="@+id/hooker"
@@ -62,6 +69,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hooker"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
+            android:textColor="@color/black"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -72,6 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="318dp"
+        android:padding="3dp"
         android:layout_marginTop="74dp">
         <ImageView
             android:id="@+id/tight_head_prop"
@@ -84,6 +97,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tight Head Prop"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
+            android:textColor="@color/black"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -94,6 +112,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="120dp"
+        android:padding="3dp"
         android:layout_marginTop="164dp">
         <ImageView
             android:id="@+id/lock_one"
@@ -105,6 +124,11 @@
             android:id="@+id/lock_one_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:text="Lock One"
             android:textAlignment="center" />
     </LinearLayout>
@@ -114,6 +138,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
+        android:padding="3dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="252dp"
         android:layout_marginTop="164dp">
@@ -128,6 +153,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
+            android:textColor="@color/black"
             android:text="Lock Two"
             android:textAlignment="center" />
     </LinearLayout>
@@ -135,6 +165,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="3dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="304dp"
         android:orientation="vertical"
@@ -153,6 +184,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Blindside Flanker"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -162,6 +198,7 @@
         android:layout_marginStart="170dp"
         android:layout_marginTop="304dp"
         android:orientation="vertical"
+        android:padding="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -176,6 +213,11 @@
             android:id="@+id/number_eight_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:text="Number Eight"
             android:textAlignment="center" />
     </LinearLayout>
@@ -185,6 +227,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="280dp"
         android:layout_marginTop="304dp"
+        android:padding="3dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -200,7 +243,12 @@
             android:id="@+id/open_side_flanker_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:text="Open Side Flanker"
+            android:textColor="@color/black"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -210,6 +258,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="408dp"
         android:orientation="vertical"
+        android:padding="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -225,6 +274,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:text="Scrum Half"
             android:textAlignment="center" />
     </LinearLayout>
@@ -235,6 +289,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
         android:layout_marginTop="408dp"
+        android:padding="3dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -255,7 +310,12 @@
             android:layout_gravity="center_horizontal"
             android:text="Flyhalf"
             android:textAlignment="center"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="154dp"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             tools:layout_editor_absoluteY="458dp" />
 
     </LinearLayout>
@@ -265,6 +325,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginTop="492dp"
+        android:padding="3dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -281,6 +342,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:text="Inside Centre"
             android:textAlignment="center" />
     </LinearLayout>
@@ -289,6 +355,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="280dp"
+        android:padding="3dp"
         android:layout_marginTop="492dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -306,6 +373,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Outside Centre"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
+            android:textColor="@color/black"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -313,6 +385,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:padding="3dp"
         android:layout_marginTop="592dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -330,6 +403,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Left Wing"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
+            android:textColor="@color/black"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -337,6 +415,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="304dp"
+        android:padding="3dp"
         android:layout_marginTop="592dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -354,6 +433,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Right Wing"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -362,6 +446,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
+        android:padding="3dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="188dp"
         android:layout_marginTop="584dp">
@@ -378,6 +463,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fullback"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@drawable/player_name_bg"
             android:textAlignment="center" />
     </LinearLayout>
 
