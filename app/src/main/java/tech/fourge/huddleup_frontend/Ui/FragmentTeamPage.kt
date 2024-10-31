@@ -22,6 +22,7 @@ class FragmentTeamPage : Fragment() {
     private lateinit var benchButton: ImageView
     private var originalButtonY: Float = 0f
     private var playerList: List<String> = emptyList()
+    private var loading: Boolean = false
     private val teamHelper = TeamHelper()
 
     override fun onCreateView(
@@ -40,9 +41,10 @@ class FragmentTeamPage : Fragment() {
 
         // Fetch the team details and update the player list
         lifecycleScope.launch {
+            loading = true
             val teamId = CurrentUserUtil.currentUser.teamIds[0]
-            Log.d("BITCH", "Team ID: $teamId")
             playerList = teamHelper.getTeamPlayerNames(teamId)
+            loading = false
         }
 
         // Save the original Y position of the button
@@ -88,56 +90,59 @@ class FragmentTeamPage : Fragment() {
     }
 
     private fun handleClick(imageViewId: Int) {
-        val name = when (imageViewId) {
-            R.id.loose_head_prop -> "Loose Head Prop"
-            R.id.hooker -> "Hooker"
-            R.id.tight_head_prop -> "Tight Head Prop"
-            R.id.lock_one -> "Lock One"
-            R.id.lock_two -> "Lock Two"
-            R.id.blindside_flanker -> "Blindside Flanker"
-            R.id.number_eight -> "Number Eight"
-            R.id.open_side_flanker -> "Open Side Flanker"
-            R.id.scrum_half -> "Scrum Half"
-            R.id.flyhalf -> "Flyhalf"
-            R.id.inside_centre -> "Inside Centre"
-            R.id.outside_centre -> "Outside Centre"
-            R.id.left_wing -> "Left Wing"
-            R.id.right_wing -> "Right Wing"
-            R.id.fullback -> "Fullback"
-            R.id.sixteen -> "Bench Slot 1"
-            R.id.seventeen -> "Bench Slot 2"
-            R.id.eighteen -> "Bench Slot 3"
-            R.id.nineteen -> "Bench Slot 4"
-            R.id.twenty -> "Bench Slot 5"
-            R.id.twenty_one -> "Bench Slot 6"
-            R.id.twenty_two -> "Bench Slot 7"
-            R.id.twenty_three -> "Bench Slot 8"
-            else -> "Unknown Position"
+        if (!loading) {
+            val name = when (imageViewId) {
+                R.id.loose_head_prop -> "Loose Head Prop"
+                R.id.hooker -> "Hooker"
+                R.id.tight_head_prop -> "Tight Head Prop"
+                R.id.lock_one -> "Lock One"
+                R.id.lock_two -> "Lock Two"
+                R.id.blindside_flanker -> "Blindside Flanker"
+                R.id.number_eight -> "Number Eight"
+                R.id.open_side_flanker -> "Open Side Flanker"
+                R.id.scrum_half -> "Scrum Half"
+                R.id.flyhalf -> "Flyhalf"
+                R.id.inside_centre -> "Inside Centre"
+                R.id.outside_centre -> "Outside Centre"
+                R.id.left_wing -> "Left Wing"
+                R.id.right_wing -> "Right Wing"
+                R.id.fullback -> "Fullback"
+                R.id.sixteen -> "Bench Slot 1"
+                R.id.seventeen -> "Bench Slot 2"
+                R.id.eighteen -> "Bench Slot 3"
+                R.id.nineteen -> "Bench Slot 4"
+                R.id.twenty -> "Bench Slot 5"
+                R.id.twenty_one -> "Bench Slot 6"
+                R.id.twenty_two -> "Bench Slot 7"
+                R.id.twenty_three -> "Bench Slot 8"
+                else -> "Unknown Position"
+            }
+
+            // Show a popup dialog with a list of players
+            val playersArray = playerList.toTypedArray()
+            var selectedPlayer = playersArray[0]
+
+
+            AlertDialog.Builder(requireContext())
+                .setTitle("Select Player for $name")
+                .setSingleChoiceItems(playersArray, 0) { _, which ->
+                    selectedPlayer = playersArray[which]
+                }
+                .setPositiveButton("Select") { dialog, _ ->
+                    // Handle the player selection
+                    updateImageView(imageViewId)
+                    updateTextView(imageViewId, selectedPlayer)
+                    playerList = playerList.filter { it != selectedPlayer }
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        } else {
+            return
+
         }
-
-        // Show a popup dialog with a list of players
-        val playersArray = playerList.toTypedArray()
-        var selectedPlayer = playersArray[0]
-        for(player in playersArray){
-            Log.d("playersArray",player)}
-
-
-        AlertDialog.Builder(requireContext())
-            .setTitle("Select Player for $name")
-            .setSingleChoiceItems(playersArray, 0) { _, which ->
-                selectedPlayer = playersArray[which]
-            }
-            .setPositiveButton("Select") { dialog, _ ->
-                // Handle the player selection
-                updateImageView(imageViewId)
-                updateTextView(imageViewId, selectedPlayer)
-                playerList = playerList.filter { it != selectedPlayer }
-                dialog.dismiss()
-            }
-            .setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()
     }
 
     private fun updateImageView(imageViewId: Int) {

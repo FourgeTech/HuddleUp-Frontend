@@ -130,7 +130,6 @@ class TeamHelper {
             val resultData = result.data as? Map<*, *>
             val status = resultData?.get("status") as? String
             val message = resultData?.get("message") as? String
-            Log.d(TAG, status.toString())
 
             if (status == "success") {
                 "success"
@@ -150,9 +149,8 @@ class TeamHelper {
     suspend fun getTeamPlayerNames(teamId: String): List<String> {
         return try {
             val result = functions.getHttpsCallable("getTeam").call(mapOf("teamId" to teamId)).await()
-            Log.d("Result", result.data.toString())
+
             val data = result.data as? Map<String, Any>
-            Log.d("Data", data.toString())
             val members = data?.get("members") as? Map<String, String> ?: emptyMap()
 
             // Filter members to get only players
@@ -163,7 +161,9 @@ class TeamHelper {
                 val user = getUser(playerId)
                 user?.let { "${it.firstname} ${it.lastname}" }
             }
-            playerNames
+
+            // Sort player names alphabetically by last name
+            playerNames.sortedBy { it.split(" ").last() }
         } catch (e: Exception) {
             Log.w(TAG, "Failed to get team", e)
             emptyList()
