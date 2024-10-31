@@ -173,7 +173,7 @@ class UserHelper {
             }
             .addOnFailureListener { e ->
                 // Handle error
-                Log.d(TAG, "Failed to get user: $e")
+                Log.d(TAG, "Failed to get user:"+ uid +" UID HERE")
             }
     }
 

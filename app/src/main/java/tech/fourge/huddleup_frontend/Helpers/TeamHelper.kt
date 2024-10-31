@@ -153,10 +153,13 @@ class TeamHelper {
             Log.d("Result", result.data.toString())
             val data = result.data as? Map<String, Any>
             Log.d("Data", data.toString())
-            val players = data?.get("players") as? List<String> ?: emptyList()
+            val members = data?.get("members") as? Map<String, String> ?: emptyMap()
+
+            // Filter members to get only players
+            val playerIds = members.filter { it.value == "Player" }.keys
 
             // Fetch user details for each player and get their full names
-            val playerNames = players.mapNotNull { playerId ->
+            val playerNames = playerIds.mapNotNull { playerId ->
                 val user = getUser(playerId)
                 user?.let { "${it.firstname} ${it.lastname}" }
             }
