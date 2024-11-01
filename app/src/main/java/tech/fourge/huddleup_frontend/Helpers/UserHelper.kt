@@ -24,8 +24,8 @@ class UserHelper {
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
-//        functions.useEmulator("10.0.2.2", 5001)
-//        auth.useEmulator("10.0.2.2", 9099)
+       functions.useEmulator("10.0.2.2", 5001)
+       auth.useEmulator("10.0.2.2", 9099)
         auth.signOut()
     }
 

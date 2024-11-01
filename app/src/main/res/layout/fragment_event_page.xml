@@ -18,8 +18,8 @@
         android:textSize="20sp"
         android:layout_marginTop="16dp" />
 
-    <ListView
-        android:id="@+id/matchListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/matchRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -31,8 +31,8 @@
         android:textSize="20sp"
         android:layout_marginTop="16dp" />
 
-    <ListView
-        android:id="@+id/practiceListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/practiceRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
