@@ -2,6 +2,8 @@ package tech.fourge.huddleup_frontend.Ui
 
 import android.animation.ObjectAnimator
 import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,16 +15,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 import tech.fourge.huddleup_frontend.Helpers.TeamHelper
+import tech.fourge.huddleup_frontend.Utils.NetworkUtil
 
 class FragmentTeamPage : Fragment() {
     private var isBenchVisible = false
     private lateinit var benchScrollView: View
     private lateinit var benchButton: ImageView
     private lateinit var saveButton: Button
+    private lateinit var clearButton: Button
     private var originalButtonY: Float = 0f
     private var playerList: List<String> = emptyList()
     private var loading: Boolean = false
@@ -71,7 +77,33 @@ class FragmentTeamPage : Fragment() {
         benchButton = view.findViewById(R.id.benchButton)
         benchScrollView = view.findViewById(R.id.benchScrollView)
         saveButton = view.findViewById(R.id.topButton)
+        clearButton = view.findViewById(R.id.ClearListButton)
 
+        // Check for offline data and sync if online
+        if (NetworkUtil.isOnline(requireContext())) {
+            val (offlinePlayerMap, offlinePlayerList) = loadDataOffline(requireContext())
+            if (offlinePlayerMap.isNotEmpty() || offlinePlayerList.isNotEmpty()) {
+                lifecycleScope.launch {
+                    val teamId = CurrentUserUtil.currentUser.teamIds[0]
+                    val success = teamHelper.updateTeamPlayers(teamId, offlinePlayerMap.map { (key, value) -> value to key }.toMap())
+                    if (success) {
+                        Toast.makeText(requireContext(), "Offline data synced successfully", Toast.LENGTH_SHORT).show()
+                        // Clear offline data after successful sync
+                        saveDataOffline(requireContext(), emptyMap(), emptyList())
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to sync offline data", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        } else {
+            // Load offline data if offline
+            val (offlinePlayerMap, offlinePlayerList) = loadDataOffline(requireContext())
+            playerMap = offlinePlayerMap.toMutableMap()
+            playerList = offlinePlayerList
+            for ((key, value) in playerMap) {
+                updatePositionInView(key, value)
+            }
+        }
 
         // Show loading dialog if loading is true
         if (loading) {
@@ -82,6 +114,7 @@ class FragmentTeamPage : Fragment() {
         lifecycleScope.launch {
             loading = true
             showLoadingDialog()
+
             val teamId = CurrentUserUtil.currentUser.teamIds[0]
             playerList = teamHelper.getTeamPlayerNames(teamId)
 
@@ -104,9 +137,7 @@ class FragmentTeamPage : Fragment() {
             toggleBenchVisibility()
         }
 
-//        playerMap = CurrentUserUtil.playerMap
-
-        if(CurrentUserUtil.currentUser.role == "Manager"){
+        if (CurrentUserUtil.currentUser.role == "Manager") {
             saveButton.visibility = View.VISIBLE
             // Loop through each position number and set up the click listener
             for (positionNumber in positionViewMap.keys) {
@@ -117,8 +148,7 @@ class FragmentTeamPage : Fragment() {
                     }
                 }
             }
-        }
-        else{
+        } else {
             saveButton.visibility = View.GONE
         }
 
@@ -129,14 +159,28 @@ class FragmentTeamPage : Fragment() {
         saveButton.setOnClickListener {
             lifecycleScope.launch {
                 val teamId = CurrentUserUtil.currentUser.teamIds[0]
-                val success = teamHelper.updateTeamPlayers(teamId, playerMap.map { (key, value) -> value to key }.toMap())
-                if (success) {
-                    Toast.makeText(requireContext(), "Players updated successfully", Toast.LENGTH_SHORT).show()
+                if (NetworkUtil.isOnline(requireContext())) {
+                    val success = teamHelper.updateTeamPlayers(teamId, playerMap.map { (key, value) -> value to key }.toMap())
+                    if (success) {
+                        Toast.makeText(requireContext(), "Players updated successfully", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to update players", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
-                    Toast.makeText(requireContext(), "Failed to update players", Toast.LENGTH_SHORT).show()
+                    saveDataOffline(requireContext(), playerMap, playerList)
+                    Toast.makeText(requireContext(), "No internet connection. Data saved offline.", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
+        // Clear button click listener
+//        clearButton.setOnClickListener {
+//            playerMap.clear()
+//            Log.d("playerMap", playerMap.toString())
+//            for (positionNumber in positionViewMap.keys) {
+//                resetPositionToDefault(positionNumber)
+//            }
+//        }
     }
 
 
@@ -329,4 +373,20 @@ class FragmentTeamPage : Fragment() {
         benchButton.visibility = View.VISIBLE // Ensure the button is visible after the animation
     }, 300)
 }
+    private fun saveDataOffline(context: Context, playerMap: Map<Int, String>, playerList: List<String>) {
+        val sharedPreferences: SharedPreferences = context.getSharedPreferences("offline_data", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("playerMap", Gson().toJson(playerMap))
+        editor.putString("playerList", Gson().toJson(playerList))
+        editor.apply()
+    }
+
+    private fun loadDataOffline(context: Context): Pair<Map<Int, String>, List<String>> {
+        val sharedPreferences: SharedPreferences = context.getSharedPreferences("offline_data", Context.MODE_PRIVATE)
+        val playerMapJson = sharedPreferences.getString("playerMap", "{}")
+        val playerListJson = sharedPreferences.getString("playerList", "[]")
+        val playerMap: Map<Int, String> = Gson().fromJson(playerMapJson, object : TypeToken<Map<Int, String>>() {}.type)
+        val playerList: List<String> = Gson().fromJson(playerListJson, object : TypeToken<List<String>>() {}.type)
+        return Pair(playerMap, playerList)
+    }
 }
