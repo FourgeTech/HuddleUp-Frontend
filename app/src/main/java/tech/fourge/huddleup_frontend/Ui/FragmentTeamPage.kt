@@ -174,13 +174,12 @@ class FragmentTeamPage : Fragment() {
         }
 
         // Clear button click listener
-//        clearButton.setOnClickListener {
-//            playerMap.clear()
-//            Log.d("playerMap", playerMap.toString())
-//            for (positionNumber in positionViewMap.keys) {
-//                resetPositionToDefault(positionNumber)
-//            }
-//        }
+        clearButton.setOnClickListener {
+            for (positionNumber in positionViewMap.keys) {
+                resetPositionToDefault(positionNumber)
+            }
+            playerMap.clear()
+        }
     }
 
 
