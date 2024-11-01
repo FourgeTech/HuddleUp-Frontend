@@ -89,6 +89,22 @@ class TeamHelper {
         }
     }
 
+    suspend fun updateTeamPlayers(teamId: String, players: Map<String, Int>): Boolean {
+        return try {
+            // Prepare the data to update only the players
+            val updateData = mapOf("players" to players)
+
+            // Call the Firebase Cloud Function to update the team players
+            val result = functions.getHttpsCallable("updateTeam").call(mapOf("teamId" to teamId, "teamData" to updateData)).await()
+
+            val success = result.data as? Boolean
+            success == true
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to update team players", e)
+            false
+        }
+    }
+
     // Fetch team details
     suspend fun getTeam(teamId: String): Team? {
         return try {
@@ -167,6 +183,18 @@ class TeamHelper {
         } catch (e: Exception) {
             Log.w(TAG, "Failed to get team", e)
             emptyList()
+        }
+    }
+
+    suspend fun getTeamPlayers(teamId: String): Map<String, Int> {
+        return try {
+            val result = functions.getHttpsCallable("getTeam").call(mapOf("teamId" to teamId)).await()
+            val data = result.data as? Map<String, Any>
+            val players = data?.get("players") as? Map<String, Int> ?: emptyMap()
+            players
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get team players", e)
+            emptyMap()
         }
     }
 

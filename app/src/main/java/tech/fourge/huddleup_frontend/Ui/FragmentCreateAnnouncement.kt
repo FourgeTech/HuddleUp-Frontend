@@ -65,7 +65,7 @@ class FragmentCreateAnnouncement : Fragment() {
         // Create the AnnouncementModel object
         val announcement = AnnouncementModel(
             announcementId = announcementId,
-            teamId = "Tigers",
+            teamId = CurrentUserUtil.currentUser.teamIds[0],
             title = "${currentUser.firstname} ${currentUser.lastname}",
             message = message,
             createdBy = currentUser.username,
