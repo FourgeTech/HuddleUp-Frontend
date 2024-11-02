@@ -8,7 +8,7 @@ import java.util.Locale
 
 class CurrentUserUtil {
     companion object {
-        var currentUser: UserModel = UserModel("", "", "", "", "")
+        var currentUser: UserModel = UserModel("", "", "", "", "", emptyList())
         var currentUserUID: String = ""
         var fcmToken: String = ""
         var currentUserSettings: Settings = Settings(

@@ -8,6 +8,7 @@ import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.functions
 import kotlinx.coroutines.tasks.await
 import tech.fourge.huddleup_frontend.Models.Team
+import tech.fourge.huddleup_frontend.Models.UserModel
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 
 class TeamHelper {
@@ -17,6 +18,7 @@ class TeamHelper {
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
+       functions.useEmulator("10.0.2.2", 5001)
         functions.useEmulator("10.0.2.2", 5001)
         auth.useEmulator("10.0.2.2", 9099)
     }
@@ -52,8 +54,12 @@ class TeamHelper {
             val message = resultData?.get("message") as? String
             val teamCode = resultData?.get("teamCode") as? String
 
+            val updateData = mapOf("role" to "Manager")
+            UserHelper().updateUserRole(currentUserId, updateData)
+
             if (status == "success") {
                 teamCode ?: "unknown_error"
+
             } else {
                 message ?: "unknown_error"
             }
@@ -88,11 +94,29 @@ class TeamHelper {
         }
     }
 
+    suspend fun updateTeamPlayers(teamId: String, players: Map<String, Int>): Boolean {
+        return try {
+            // Prepare the data to update only the players
+            val updateData = mapOf("players" to players)
+
+            // Call the Firebase Cloud Function to update the team players
+            val result = functions.getHttpsCallable("updateTeam").call(mapOf("teamId" to teamId, "teamData" to updateData)).await()
+
+            val success = result.data as? Boolean
+            success == true
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to update team players", e)
+            false
+        }
+    }
+
     // Fetch team details
     suspend fun getTeam(teamId: String): Team? {
         return try {
             val result = functions.getHttpsCallable("getTeam").call(mapOf("teamId" to teamId)).await()
+            Log.d("Result", result.data.toString())
             val data = result.data as? Map<String, Any>
+            Log.d("Data", data.toString())
             data?.let {
                 Team.fromMap(it)
             }
@@ -124,10 +148,13 @@ class TeamHelper {
                 "userId" to currentUserId
             )).await()
 
+
+            val updateData = mapOf("role" to "Player")
+            UserHelper().updateUserRole(currentUserId, updateData)
+
             val resultData = result.data as? Map<*, *>
             val status = resultData?.get("status") as? String
             val message = resultData?.get("message") as? String
-            Log.d(TAG, status.toString())
 
             if (status == "success") {
                 "success"
@@ -140,6 +167,54 @@ class TeamHelper {
         } catch (e: Exception) {
             Log.w(TAG, "Failed to join team", e)
             return "unknown_error"
+        }
+    }
+
+    // Fetch team details and return a list of players' full names
+    suspend fun getTeamPlayerNames(teamId: String): List<String> {
+        return try {
+            val result = functions.getHttpsCallable("getTeam").call(mapOf("teamId" to teamId)).await()
+
+            val data = result.data as? Map<String, Any>
+            val members = data?.get("members") as? Map<String, String> ?: emptyMap()
+
+            // Filter members to get only players
+            val playerIds = members.filter { it.value == "Player" }.keys
+
+            // Fetch user details for each player and get their full names
+            val playerNames = playerIds.mapNotNull { playerId ->
+                val user = getUser(playerId)
+                user?.let { "${it.firstname} ${it.lastname}" }
+            }
+
+            // Sort player names alphabetically by last name
+            playerNames.sortedBy { it.split(" ").last() }
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get team", e)
+            emptyList()
+        }
+    }
+
+    suspend fun getTeamPlayers(teamId: String): Map<String, Int> {
+        return try {
+            val result = functions.getHttpsCallable("getTeam").call(mapOf("teamId" to teamId)).await()
+            val data = result.data as? Map<String, Any>
+            val players = data?.get("players") as? Map<String, Int> ?: emptyMap()
+            players
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get team players", e)
+            emptyMap()
+        }
+    }
+
+    private suspend fun getUser(userId: String): UserModel? {
+        return try {
+            val result = functions.getHttpsCallable("getUser").call(mapOf("uid" to userId)).await()
+            val data = result.data as? Map<String, Any>
+            data?.let { UserModel.fromMap(it) }
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get user", e)
+            null
         }
     }
 

@@ -17,6 +17,7 @@ import tech.fourge.huddleup_frontend.Helpers.AnnouncementHelper
 import tech.fourge.huddleup_frontend.Models.AnnouncementModel
 import tech.fourge.huddleup_frontend.R
 import tech.fourge.huddleup_frontend.Utils.AnnouncementAdapter
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUser
 
 class HomePage : Fragment() {
@@ -32,7 +33,7 @@ class HomePage : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home_page, container, false)
         btnAddAnnouncement = view.findViewById(R.id.btnAddAnnouncement)
-        if(currentUser.role != "manager"){
+        if(currentUser.role != "Manager"){
             btnAddAnnouncement.visibility = View.GONE
         }
         else{
@@ -66,7 +67,9 @@ class HomePage : Fragment() {
 
     private suspend fun fetchAndDisplayAnnouncements() {
         // Call the suspending function to fetch announcements
-        val announcements = announcementHelper.getAnnouncementsByTeamId("Tigers")
+        Log.d("HomePage", currentUser.toString())
+        val teamId = currentUser.teamIds[0]
+        val announcements = announcementHelper.getAnnouncementsByTeamId(teamId)
 
         // Update the UI on the main thread
         withContext(Dispatchers.Main) {

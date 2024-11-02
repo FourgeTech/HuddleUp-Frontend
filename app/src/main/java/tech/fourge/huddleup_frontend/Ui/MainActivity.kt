@@ -2,8 +2,13 @@ package tech.fourge.huddleup_frontend.Ui
 
 import tech.fourge.huddleup_frontend.Ui.LoginActivity
 import android.os.Bundle
+import android.widget.Toast
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import tech.fourge.huddleup_frontend.Helpers.UserHelper
+import tech.fourge.huddleup_frontend.Utils.ToastUtils
 import tech.fourge.huddleup_frontend.databinding.WelcomePageBinding
 import tech.fourge.huddleup_frontend.Utils.openIntent
 import com.google.firebase.messaging.FirebaseMessaging
@@ -29,7 +34,13 @@ class MainActivity : AppCompatActivity() {
 
         // Open the LoginActivity
         binding.loginButton.setOnClickListener{
-            openIntent(this, LoginActivity::class.java)
+//            openIntent(this, LoginActivity::class.java)
+            lifecycleScope.launch {
+                val result = UserHelper().signIn("rassie@gmail.com", "Test@123")
+                if (result == "success") {
+                    openIntent( this@MainActivity, HomeActivity::class.java,null,true)
+                }
+            }
         }
 
         // Open the CreateAccountActivity

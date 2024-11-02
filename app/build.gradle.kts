@@ -70,6 +70,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-messaging-ktx")
     implementation(libs.androidx.material3.android)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.gson)
     implementation(libs.androidx.biometric.ktx)
     implementation(libs.androidx.security.crypto.ktx)
     testImplementation ("junit:junit:4.13.2")

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Ui.FragmentCreateEventPage">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <TextView
+        android:id="@+id/create_event_title"
+        android:layout_width="384dp"
+        android:layout_height="54dp"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:text="Create Event"
+        android:textColor="@color/huddleBlue"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintBottom_toTopOf="@id/guidelineTop" />
+
+    <!-- Event Type -->
+    <TextView
+        android:id="@+id/event_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Event Type"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/guidelineMiddle"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
+
+    <Spinner
+        android:id="@+id/spinnerEventType"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/event_type_title" />
+
+    <!-- Date Input -->
+    <TextView
+        android:id="@+id/date_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Date"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/spinnerEventType"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:paddingStart="10dp"
+        android:hint="Enter Date (YYYY-MM-DD)"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
+        android:focusable="false"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/date_title" />
+
+    <!-- Time Input -->
+    <TextView
+        android:id="@+id/time_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Time"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/editTextDate"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:paddingStart="10dp"
+        android:hint="Enter Time (HH:mm)"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
+        android:focusable="false"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/time_title" />
+
+    <!-- Location Input -->
+    <TextView
+        android:id="@+id/location_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Location"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/editTextTime"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
+
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:paddingStart="10dp"
+        android:hint="Enter Location"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/location_title" />
+
+    <Button
+        android:id="@+id/buttonCreateEvent"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:text="Create Event"
+        android:backgroundTint="#007BFF"
+        android:textColor="@color/huddleWhite"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
