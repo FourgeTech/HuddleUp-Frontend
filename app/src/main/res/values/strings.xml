@@ -85,7 +85,6 @@
     <string name="team_name_label">Team Name:</string>
     <string name="team_name_description">What is your team name?</string>
     <string name="location_label">Location:</string>
-    <string name="location_hint">Location</string>
     <string name="location_description">Where is your team located?</string>
     <string name="league_label">League:</string>
     <string name="league_hint">League</string>
@@ -109,4 +108,23 @@
     <string name="attendance_schedule">Attendance Schedule</string>
     <string name="chat">Chat</string>
     <string name="profile">Profile</string>
+    <string name="create_event_title">Create Event</string>
+    <string name="event_type_title">Event Type</string>
+    <string name="date_title">Date</string>
+    <string name="time_title">Time</string>
+    <string name="location_title">Location</string>
+    <string name="create_event_button">Create Event</string>
+    <string name="date_hint">Enter Date (YYYY-MM-DD)</string>
+    <string name="time_hint">Enter Time (HH:mm)</string>
+    <string name="location_hint">Enter Location</string>
+    <string name="event_page_title">Event Page</string>
+    <string name="create_new_event_button">Create New Event</string>
+    <string name="match_events_title">Match Events</string>
+    <string name="practice_events_title">Practice Events</string>
+    <string name="event_type">Event Type</string>
+    <string name="date_label">Date:</string>
+    <string name="time_label">Time:</string>
+    <string name="manager_label">Manager:</string>
+    <string name="save_squad_button">Save Squad</string>
+    <string name="clear_squad_button">Clear Squad</string>
 </resources>

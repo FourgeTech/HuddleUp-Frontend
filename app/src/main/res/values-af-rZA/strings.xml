@@ -76,7 +76,6 @@
     <string name="create_team_subtitle">Dis tyd om die Droomspan te Skep</string>
     <string name="team_name_description">Wat is jou span se naam?</string>
     <string name="location_label">Ligging:</string>
-    <string name="location_hint">Ligging</string>
     <string name="location_description">Waar is jou span geleë?</string>
     <string name="league_label">Liga:</string>
     <string name="league_hint">Liga</string>
@@ -97,4 +96,23 @@
     <string name="attendance_schedule">Bywoningskedule</string>
     <string name="chat">Klets</string>
     <string name="profile">Profiel</string>
+    <string name="create_event_title">Skep Gebeurtenis</string>
+    <string name="event_type_title">Gebeurtenis Tipe</string>
+    <string name="date_title">Datum</string>
+    <string name="time_title">Tyd</string>
+    <string name="location_title">Ligging</string>
+    <string name="create_event_button">Skep Gebeurtenis</string>
+    <string name="date_hint">Voer Datum in (JJJJ-MM-DD)</string>
+    <string name="time_hint">Voer Tyd in (UU:mm)</string>
+    <string name="location_hint">Voer Ligging in</string>
+    <string name="event_page_title">Gebeurtenisbladsy</string>
+    <string name="create_new_event_button">Skep Nuwe Gebeurtenis</string>
+    <string name="match_events_title">Wedstryd Gebeurtenisse</string>
+    <string name="practice_events_title">Oefengebeurtenisse</string>
+    <string name="event_type">Gebeurtenis Tipe</string>
+    <string name="date_label">Datum:</string>
+    <string name="time_label">Tyd:</string>
+    <string name="manager_label">Bestuurder:</string>
+    <string name="save_squad_button">Stoor Span</string>
+    <string name="clear_squad_button">Maak Span Skoon</string>
 </resources>
