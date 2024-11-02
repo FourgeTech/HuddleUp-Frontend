@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener{
 //            openIntent(this, LoginActivity::class.java)
             lifecycleScope.launch {
-                val result = UserHelper().signIn("rassie@gmail.com", "Test@123")
+                val result = UserHelper().signIn("dda@gmail.com", "Test@123")
                 if (result == "success") {
                     openIntent( this@MainActivity, HomeActivity::class.java,null,true)
                 }

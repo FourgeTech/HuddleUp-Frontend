@@ -11,7 +11,7 @@ class EventHelper {
 
     init {
         // Use the emulator for local development (comment out for production)
-        functions.useEmulator("10.0.2.2", 5001)
+//        functions.useEmulator("10.0.2.2", 5001)
     }
 
     suspend fun getEventsByTeamId(teamId: String): List<EventModel>? {
