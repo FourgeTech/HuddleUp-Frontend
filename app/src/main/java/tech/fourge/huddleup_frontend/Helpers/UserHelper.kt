@@ -8,8 +8,10 @@ import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.functions
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
 import tech.fourge.huddleup_frontend.Models.Settings
 import tech.fourge.huddleup_frontend.Models.UserModel
@@ -258,6 +260,30 @@ class UserHelper {
             Log.d(TAG, "Failed to update settings: ${e.message}")
             false
         }
+    }
+
+    fun addFcmTokenToFirestore(uid: String, fcmToken: String) {
+        // Create a map with data to send to the function
+        val data = hashMapOf(
+            "uid" to uid,
+            "fcmToken" to fcmToken
+        )
+
+        // Call the addFcmToken Cloud Function
+        FirebaseFunctions.getInstance()
+            .getHttpsCallable("addFcmToken")
+            .call(data)
+            .addOnSuccessListener { result ->
+                val success = (result.data as Map<*, *>)["success"] as? Boolean
+                if (success == true) {
+                    Log.d("FCM", "FCM token successfully added to Firestore.")
+                } else {
+                    Log.e("FCM", "Failed to add FCM token to Firestore.")
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("FCM", "Error calling addFcmToken function: ${e.message}", e)
+            }
     }
 
     companion object {

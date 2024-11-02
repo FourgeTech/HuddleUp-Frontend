@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chat Name"
+            android:text="@string/chat_name"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="18sp"/>
@@ -35,18 +35,18 @@
             android:layout_gravity="end"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
-            android:text="Refresh"
+            android:text="@string/refresh_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"/>
 
-<!--        &lt;!&ndash; Number of members &ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:id="@+id/chatMembersCount"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Members: 0"-->
-<!--            android:textColor="@android:color/white"-->
-<!--            android:textSize="16sp"/>-->
+        <!--        &lt;!&ndash; Number of members &ndash;&gt;-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/chatMembersCount"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Members: 0"-->
+        <!--            android:textColor="@android:color/white"-->
+        <!--            android:textSize="16sp"/>-->
     </LinearLayout>
 
     <!-- RecyclerView for chat messages -->
@@ -71,7 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message"
+            android:hint="@string/message_hint"
             android:inputType="textCapSentences"/>
 
         <!-- Send button -->

@@ -1,17 +1,112 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">HuddleUp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="chat_types">
         <item>Team</item>
         <item>Manager</item>
     </string-array>
-    <string-array name="languages">
+    <string-array name="languages" tools:ignore="InconsistentArrays">
         <item>Afrikaans</item>
         <item>English</item>
+        <item>Japanese</item>
     </string-array>
     <string-array name="themes">
         <item>Light</item>
         <item>Dark</item>
     </string-array>
+    <string name="huddleup">HuddleUp</string>
+    <string name="motto">Your Game Plan for Team \nSuccess</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="settings">Settings</string>
+    <string name="name_hint">Name</string>
+    <string name="surname_hint">Surname</string>
+    <string name="profile_picture_hint">Profile Picture URL</string>
+    <string name="practice_alerts">Practice Alerts</string>
+    <string name="match_alerts">Match Alerts</string>
+    <string name="chat_notifications">Chat Notifications</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="login_subtitle">It\'s Time to Log In</string>
+    <string name="email_label">Email:</string>
+    <string name="password_label">Password:</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_button">Log in</string>
+    <string name="google_sign_in">Sign In With Google</string>
+    <string name="team_name_hint">Enter team name</string>
+    <string name="chat_type_label">Chat Type</string>
+    <string name="team_description_label">Team Description</string>
+    <string name="team_description_hint">Enter team description</string>
+    <string name="join_team_title">Join a Team</string>
+    <string name="join_team_description">It\'s time to Join the Dream Team</string>
+    <string name="team_code_title">Team Code</string>
+    <string name="team_code_hint">Enter team code</string>
+    <string name="no_team_code">Don\'t have one? Ask your coach or teammate.</string>
+    <string name="continue_button">Continue</string>
+    <string name="create_team_button">Create Team</string>
+    <string name="join_team_button">Join Team</string>
+    <string name="sender">Sender</string>
+    <string name="message_content">Message Content</string>
+    <string name="timestamp">Timestamp</string>
+    <string name="chat_name">Chat Name</string>
+    <string name="chat_description">Description</string>
+    <string name="name">Aidan Smith</string>
+    <string name="time">7min</string>
+    <string name="announcement_text">Practice Rescheduled for 5PM</string>
+    <string name="views">3 / 10</string>
+    <string name="invite_players_title">Invite Players</string>
+    <string name="invite_players_motto">Its Time to Invite the Star \nPlayers</string>
+    <string name="share_text">Nice Work! \nNow, let’s add your team</string>
+    <string name="copy_link_button">Copy Link</string>
+    <string name="settings_title">Settings</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="profile_name">Michael Smith</string>
+    <string name="edit_profile_button">Edit Profile</string>
+    <string name="settings_text">Settings</string>
+    <string name="logout_text">Log out</string>
+    <string name="announcements_title">Announcements</string>
+    <string name="create_announcement_button">Create Announcement</string>
+    <string name="edit_profile_title">Edit Profile</string>
+    <string name="first_name_title">First Name</string>
+    <string name="phonenumber_title">Phone Number</string>
+    <string name="save_button">Save</string>
+    <string name="create_announcement_title">Create Announcement</string>
+    <string name="announcement_hint">Type Announcement Here</string>
+    <string name="post_announcement_button">Post Announcement</string>
+    <string name="chats_title">Chats</string>
+    <string name="new_chat_button">New Chat</string>
+    <string name="refresh_button">Refresh</string>
+    <string name="message_hint">Type a message</string>
+    <string name="forgot_password_title">Forgot Password</string>
+    <string name="forgot_password_description">Please enter your email to reset the password</string>
+    <string name="reset_password_button">Reset Password</string>
+    <string name="create_team_title">Create Team</string>
+    <string name="create_team_subtitle">It\'s Time to Create the Dream Team</string>
+    <string name="team_name_label">Team Name:</string>
+    <string name="team_name_description">What is your team name?</string>
+    <string name="location_label">Location:</string>
+    <string name="location_hint">Location</string>
+    <string name="location_description">Where is your team located?</string>
+    <string name="league_label">League:</string>
+    <string name="league_hint">League</string>
+    <string name="league_description">Team league or division</string>
+    <string name="create_account_title">Create Account</string>
+    <string name="create_account_subtitle">Lets Get You Set Up Success</string>
+    <string name="first_name_hint">First name</string>
+    <string name="last_name_title">Last Name</string>
+    <string name="last_name_hint">Last name</string>
+    <string name="username_title">Username</string>
+    <string name="username_hint">Username</string>
+    <string name="email_title">Email</string>
+    <string name="email_hint">Email</string>
+    <string name="password_title">Password</string>
+    <string name="confirm_password_title">Confirm Password</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="or_title">Or</string>
+    <string name="continue_with_google_button">Continue With Google</string>
+    <string name="locker_room">Locker Room</string>
+    <string name="team">Team</string>
+    <string name="attendance_schedule">Attendance Schedule</string>
+    <string name="chat">Chat</string>
+    <string name="profile">Profile</string>
 </resources>
