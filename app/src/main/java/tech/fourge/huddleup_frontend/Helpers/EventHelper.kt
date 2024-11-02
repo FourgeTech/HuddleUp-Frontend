@@ -9,10 +9,10 @@ import tech.fourge.huddleup_frontend.Models.EventModel
 class EventHelper {
     private val functions = FirebaseFunctions.getInstance()
 
-//    init {
-//        // Use the emulator for local development (comment out for production)
+    init {
+        // Use the emulator for local development (comment out for production)
 //        functions.useEmulator("10.0.2.2", 5001)
-//    }
+    }
 
     suspend fun getEventsByTeamId(teamId: String): List<EventModel>? {
         return try {

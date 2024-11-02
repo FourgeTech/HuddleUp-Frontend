@@ -87,7 +87,6 @@
     <string name="team_name_hint">チーム名</string>
     <string name="team_name_description">チーム名は？</string>
     <string name="location_label">場所:</string>
-    <string name="location_hint">場所</string>
     <string name="location_description">チームはどこにありますか？</string>
     <string name="league_label">リーグ:</string>
     <string name="league_hint">リーグ</string>
@@ -108,4 +107,23 @@
     <string name="attendance_schedule">出席スケジュール</string>
     <string name="chat">チャット</string>
     <string name="profile">プロフィール</string>
+    <string name="create_event_title">イベントを作成</string>
+    <string name="event_type_title">イベントタイプ</string>
+    <string name="date_title">日付</string>
+    <string name="time_title">時間</string>
+    <string name="location_title">場所</string>
+    <string name="create_event_button">イベントを作成</string>
+    <string name="date_hint">日付を入力 (YYYY-MM-DD)</string>
+    <string name="time_hint">時間を入力 (HH:mm)</string>
+    <string name="location_hint">場所を入力</string>
+    <string name="event_page_title">イベントページ</string>
+    <string name="create_new_event_button">新しいイベントを作成</string>
+    <string name="match_events_title">試合イベント</string>
+    <string name="practice_events_title">練習イベント</string>
+    <string name="event_type">イベントタイプ</string>
+    <string name="date_label">日付:</string>
+    <string name="time_label">時間:</string>
+    <string name="manager_label">マネージャー:</string>
+    <string name="save_squad_button">チームを保存</string>
+    <string name="clear_squad_button">チームをクリア</string>
 </resources>

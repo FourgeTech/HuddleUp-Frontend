@@ -10,12 +10,12 @@ class AnnouncementHelper {
 
     // Firebase Functions instance
     private val functions = FirebaseFunctions.getInstance()
-//
-//    init {
-//        // Use the emulator for local development (comment out for production)
+
+    init {
+        // Use the emulator for local development (comment out for production)
 //       functions.useEmulator("10.0.2.2", 5001)
 //        functions.useEmulator("10.0.2.2", 5001)
-//    }
+    }
 
     // Get announcements by teamId
     suspend fun getAnnouncementsByTeamId(teamId: String): List<AnnouncementModel>? {

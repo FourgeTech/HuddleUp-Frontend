@@ -95,7 +95,7 @@ class FragmentChatPage : Fragment() {
                 val chatType = chatTypeSpinner.selectedItem.toString()
                 val chatDescription = chatDescriptionEditText.text.toString()
                 lifecycleScope.launch {
-                   val newChat = ChatHelper().newChat(teamName,chatDescription, "teamId", chatType)
+                   val newChat = ChatHelper().newChat(teamName,chatDescription, CurrentUserUtil.currentUser.teamIds[0], chatType)
                     ChatHelper().addChatIdToUsers(null, newChat)
                     val newChatList  = ChatHelper().getUserChats(CurrentUserUtil.currentUserUID)
                     chatsList = newChatList
