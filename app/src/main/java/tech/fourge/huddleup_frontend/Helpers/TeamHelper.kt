@@ -18,8 +18,8 @@ class TeamHelper {
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
-        functions.useEmulator("10.0.2.2", 5001)
-        auth.useEmulator("10.0.2.2", 9099)
+//        functions.useEmulator("10.0.2.2", 5001)
+//        auth.useEmulator("10.0.2.2", 9099)
     }
 
     // Register a new team
@@ -53,8 +53,12 @@ class TeamHelper {
             val message = resultData?.get("message") as? String
             val teamCode = resultData?.get("teamCode") as? String
 
+            val updateData = mapOf("role" to "Manager")
+            UserHelper().updateUserRole(currentUserId, updateData)
+
             if (status == "success") {
                 teamCode ?: "unknown_error"
+
             } else {
                 message ?: "unknown_error"
             }
@@ -142,6 +146,10 @@ class TeamHelper {
                 "teamCode" to teamCode,
                 "userId" to currentUserId
             )).await()
+
+
+            val updateData = mapOf("role" to "Player")
+            UserHelper().updateUserRole(currentUserId, updateData)
 
             val resultData = result.data as? Map<*, *>
             val status = resultData?.get("status") as? String

@@ -24,8 +24,8 @@ class UserHelper {
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
-       functions.useEmulator("10.0.2.2", 5001)
-       auth.useEmulator("10.0.2.2", 9099)
+//       functions.useEmulator("10.0.2.2", 5001)
+//       auth.useEmulator("10.0.2.2", 9099)
         auth.signOut()
     }
 
@@ -178,6 +178,30 @@ class UserHelper {
     }
 
     suspend fun updateUser(uid: String, userData: UserModel): Boolean {
+        val updateUserCallable = functions.getHttpsCallable("updateUser")
+
+        return try {
+            // Convert UserModel to a Map
+            val userMap = userData.toMap()
+
+            // Call the Firebase Cloud Function
+            val result = updateUserCallable.call(mapOf("uid" to uid, "userData" to userMap)).await()
+
+            // Check if the update was successful
+            if (result.data as? Boolean == true) {
+                Log.d(TAG, "User successfully updated")
+                true
+            } else {
+                Log.d(TAG, "User update failed")
+                false
+            }
+        } catch (e: Exception) {
+            Log.d(TAG, "Failed to update user: $e")
+            false
+        }
+    }
+
+    suspend fun updateUserRole(uid: String, userData: Map<String,String>): Boolean {
         val updateUserCallable = functions.getHttpsCallable("updateUser")
 
         return try {
