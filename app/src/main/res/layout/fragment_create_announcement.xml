@@ -32,7 +32,7 @@
         android:id="@+id/tvCreateAnnouncement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Announcement"
+        android:text="@string/create_announcement_title"
         android:textColor="@color/huddleBlue"
         android:fontFamily="@font/poppins"
         android:textStyle="bold"
@@ -40,12 +40,13 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_top"
         app:layout_constraintLeft_toRightOf="@id/guideline_left"
         app:layout_constraintRight_toLeftOf="@id/guideline_right" />
+
     <!-- Message Field -->
     <EditText
         android:id="@+id/etMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Type Announcement Here"
+        android:hint="@string/announcement_hint"
         android:inputType="textMultiLine"
         android:background="@drawable/input_box_vector"
         android:lines="4"
@@ -60,7 +61,7 @@
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Post Announcement"
+        android:text="@string/post_announcement_button"
         android:backgroundTint="#007BFF"
         android:textColor="@color/huddleWhite"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"

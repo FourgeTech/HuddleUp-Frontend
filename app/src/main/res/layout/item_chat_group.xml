@@ -30,7 +30,7 @@
             android:textColor="@color/white"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Chat Name"
+            android:text="@string/chat_name"
             android:textAppearance="?attr/textAppearanceListItem"/>
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_below="@id/textViewChatName"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Description"
+            android:text="@string/chat_description"
             android:textSize="14sp"/>
     </RelativeLayout>
 </LinearLayout>

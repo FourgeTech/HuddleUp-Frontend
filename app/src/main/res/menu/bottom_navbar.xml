@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Locker Room"
+    <item android:title="@string/locker_room"
         android:id="@+id/locker_room"
         android:icon="@drawable/home_icon"/>
-    <item android:title="Team"
+    <item android:title="@string/team"
         android:id="@+id/team"
         android:icon="@drawable/team_icon"/>
-    <item android:title="Attendance Schedule"
+    <item android:title="@string/attendance_schedule"
         android:id="@+id/attendance"
         android:icon="@drawable/attendance_icon" />
-    <item android:title="Chat"
+    <item android:title="@string/chat"
         android:id="@+id/chat"
         android:icon="@drawable/chat_icon"/>
-    <item android:title="Profile"
+    <item android:title="@string/profile"
         android:id="@+id/profile"
         android:icon="@drawable/profile_icon"/>
 </menu>
