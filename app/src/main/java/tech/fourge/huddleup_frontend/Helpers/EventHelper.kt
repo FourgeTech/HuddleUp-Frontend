@@ -17,7 +17,7 @@ class EventHelper {
     suspend fun getEventsByTeamId(teamId: String): List<EventModel>? {
         return try {
             val data = mapOf("teamId" to teamId)
-            val result = functions.getHttpsCallable("getEvents").call(data).await()
+            val result = functions.getHttpsCallable("getEventsByTeamId").call(data).await()
 
             Log.d(TAG, result.data.toString())
             val resultData = result.data as? Map<*, *>
