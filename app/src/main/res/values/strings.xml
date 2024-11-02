@@ -23,7 +23,7 @@
     <string name="profile_picture_hint">Profile Picture URL</string>
     <string name="practice_alerts">Practice Alerts</string>
     <string name="match_alerts">Match Alerts</string>
-    <string name="chat_notifications">Chat Notifications</string>
+    <string name="chat_notifications">All Notifications</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="login_subtitle">It\'s Time to Log In</string>
@@ -34,7 +34,7 @@
     <string name="login_button">Log in</string>
     <string name="google_sign_in">Sign In With Google</string>
     <string name="team_name_hint">Enter team name</string>
-    <string name="chat_type_label">Chat Type</string>
+    <string name="chat_type_label">Select Language</string>
     <string name="team_description_label">Team Description</string>
     <string name="team_description_hint">Enter team description</string>
     <string name="join_team_title">Join a Team</string>

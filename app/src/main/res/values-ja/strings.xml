@@ -32,7 +32,7 @@
     <string name="forgot_password">パスワードを忘れましたか？</string>
     <string name="login_button">ログイン</string>
     <string name="google_sign_in">Googleでサインイン</string>
-    <string name="chat_type_label">チャットタイプ</string>
+    <string name="chat_type_label">言語を選択してください</string>
     <string name="team_description_label">チームの説明</string>
     <string name="team_description_hint">チームの説明を入力</string>
     <string name="join_team_title">チームに参加</string>

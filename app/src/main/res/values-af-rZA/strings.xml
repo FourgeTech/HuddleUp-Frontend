@@ -24,7 +24,7 @@
     <string name="google_sign_in">Teken In Met Google</string>
     <string name="team_name_label">Span Naam</string>
     <string name="team_name_hint">Voer span naam in</string>
-    <string name="chat_type_label">Kletstipe</string>
+    <string name="chat_type_label">Kies Taal</string>
     <string name="team_description_label">Spanbeskrywing</string>
     <string name="team_description_hint">Voer spanbeskrywing in</string>
     <string name="join_team_title">Sluit Aan by \'n Span</string>

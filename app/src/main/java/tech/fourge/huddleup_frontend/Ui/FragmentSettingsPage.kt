@@ -61,15 +61,6 @@ class FragmentSettingsPage : Fragment() {
 
             ArrayAdapter.createFromResource(
                 it,
-                R.array.themes, // Assume you've defined this array in your strings.xml
-                android.R.layout.simple_spinner_dropdown_item
-            ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                view.findViewById<Spinner>(R.id.editTheme).adapter = adapter
-            }
-
-            ArrayAdapter.createFromResource(
-                it,
                 R.array.languages, // Assume you've defined this array in your strings.xml
                 android.R.layout.simple_spinner_dropdown_item
             ).also { adapter ->
@@ -92,16 +83,9 @@ class FragmentSettingsPage : Fragment() {
                 val themeIndex = themesArray.indexOf(settings.theme)
                 val languageIndex = languagesArray.indexOf(settings.preferredLanguage)
 
-                // Safely set the spinner selections if the index is valid (i.e., not -1)
-                if (themeIndex >= 0) {
-                    view.findViewById<Spinner>(R.id.editTheme).setSelection(themeIndex)
-                }
-
                 if (languageIndex >= 0) {
                     view.findViewById<Spinner>(R.id.editLanguage).setSelection(languageIndex)
                 }
-                view.findViewById<Switch>(R.id.matchAlertsSwitch).isChecked = settings.matchAlerts
-                view.findViewById<Switch>(R.id.practiceAlertsSwitch).isChecked = settings.practiceAlerts
                 view.findViewById<Switch>(R.id.chatNotificationsSwitch).isChecked = settings.chatNotifications
             } else {
                 Log.d("SettingsLoad", "Failed to fetch settings from Firestore")
@@ -111,22 +95,14 @@ class FragmentSettingsPage : Fragment() {
         // Set up the click listener for the Save Settings button
         val editSettingsButton: Button = view.findViewById(R.id.buttonSave)
         editSettingsButton.setOnClickListener {
-            val matchAlerts = view.findViewById<Switch>(R.id.matchAlertsSwitch).isChecked
-            val practiceAlerts = view.findViewById<Switch>(R.id.practiceAlertsSwitch).isChecked
             val chatNotifications = view.findViewById<Switch>(R.id.chatNotificationsSwitch).isChecked
-            val editTheme = view.findViewById<Spinner>(R.id.editTheme).selectedItem.toString()
             val editLanguage = view.findViewById<Spinner>(R.id.editLanguage).selectedItem.toString()
 
             if (editLanguage.isNotEmpty()) {
                 CurrentUserUtil.currentUserSettings.preferredLanguage = editLanguage
             }
 
-            if (editTheme.isNotEmpty()){
-                CurrentUserUtil.currentUserSettings.theme = editTheme
-            }
 
-            CurrentUserUtil.currentUserSettings.matchAlerts = matchAlerts
-            CurrentUserUtil.currentUserSettings.practiceAlerts = practiceAlerts
             CurrentUserUtil.currentUserSettings.chatNotifications = chatNotifications
 
             // Update the locale

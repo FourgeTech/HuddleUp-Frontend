@@ -713,7 +713,7 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/add_twenty_two" />
+                    android:src="@drawable/add_twenty_three" />
 
                 <TextView
                     android:id="@+id/twenty_three_text"

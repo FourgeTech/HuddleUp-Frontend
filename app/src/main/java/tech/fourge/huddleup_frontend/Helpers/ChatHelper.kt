@@ -11,10 +11,10 @@ class ChatHelper {
     private val functions = Firebase.functions
 
     // On Class Creation
-    init {
-        // Use the emulator for local development (comment out for production)
-        functions.useEmulator("10.0.2.2", 5001)
-    }
+//    init {
+//        // Use the emulator for local development (comment out for production)
+//        functions.useEmulator("10.0.2.2", 5001)
+//    }
 
     // Function to update settings
     suspend fun newMessage(chatId: String, message: Message): Boolean {
