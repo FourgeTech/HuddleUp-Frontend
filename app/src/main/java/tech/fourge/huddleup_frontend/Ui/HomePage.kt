@@ -67,7 +67,8 @@ class HomePage : Fragment() {
 
     private suspend fun fetchAndDisplayAnnouncements() {
         // Call the suspending function to fetch announcements
-        val teamId = CurrentUserUtil.currentUser.teamIds[0]
+        Log.d("HomePage", currentUser.toString())
+        val teamId = currentUser.teamIds[0]
         val announcements = announcementHelper.getAnnouncementsByTeamId(teamId)
 
         // Update the UI on the main thread

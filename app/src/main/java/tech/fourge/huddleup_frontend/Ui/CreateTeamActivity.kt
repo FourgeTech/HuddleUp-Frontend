@@ -10,6 +10,8 @@ import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.databinding.CreateTeamPageBinding
 import tech.fourge.huddleup_frontend.Utils.ValidationUtils
 import tech.fourge.huddleup_frontend.Helpers.TeamHelper
+import tech.fourge.huddleup_frontend.Helpers.UserHelper
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
 import tech.fourge.huddleup_frontend.Utils.ToastUtils
 import tech.fourge.huddleup_frontend.Utils.openIntent
 
@@ -39,6 +41,7 @@ class CreateTeamActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 val result = TeamHelper().registerTeam(teamName, location, league)
                 if (result != "unknown_error") {
+                    UserHelper().getUser(CurrentUserUtil.currentUserUID)
                     val intent = Intent(this@CreateTeamActivity, InvitePlayerActivity::class.java)
                     Toast.makeText(this@CreateTeamActivity, ToastUtils.TEAM_CREATION_SUCCESS, Toast.LENGTH_SHORT).show()
                     intent.putExtra("teamCode", result)

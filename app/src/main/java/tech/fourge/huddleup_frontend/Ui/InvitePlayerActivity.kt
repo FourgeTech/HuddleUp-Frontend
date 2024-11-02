@@ -26,7 +26,6 @@ class InvitePlayerActivity : AppCompatActivity() {
 
         val currentUserUtil = CurrentUserUtil
         binding.loginButton.setOnClickListener {
-            currentUserUtil.currentUser.role = "manager"
             openIntent(this, HomeActivity::class.java, null, true)
         }
     }
