@@ -10,6 +10,7 @@ class CurrentUserUtil {
     companion object {
         var currentUser: UserModel = UserModel("", "", "", "", "")
         var currentUserUID: String = ""
+        var fcmToken: String = ""
         var currentUserSettings: Settings = Settings(
             matchAlerts = true,
             practiceAlerts = true,
