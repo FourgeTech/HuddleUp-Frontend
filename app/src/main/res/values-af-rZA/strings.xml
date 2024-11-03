@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="huddleup">HuddleUp</string>
+    <string name="fetching_squad">Haaling Span...</string>
     <string name="app_name">HuddleUp</string>
     <string name="motto">Jou Spelplan vir Span \nSukses</string>
     <string name="login">Teken In</string>

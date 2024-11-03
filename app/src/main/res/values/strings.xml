@@ -14,6 +14,7 @@
         <item>Dark</item>
     </string-array>
     <string name="huddleup">HuddleUp</string>
+    <string name="fetching_squad">Fetching Squad...</string>
     <string name="motto">Your Game Plan for Team \nSuccess</string>
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>

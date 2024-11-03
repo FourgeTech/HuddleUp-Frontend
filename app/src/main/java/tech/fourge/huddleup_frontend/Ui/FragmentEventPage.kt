@@ -16,7 +16,8 @@ import kotlinx.coroutines.withContext
 import tech.fourge.huddleup_frontend.Helpers.EventHelper
 import tech.fourge.huddleup_frontend.Models.EventModel
 import tech.fourge.huddleup_frontend.R
-import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUser
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
+//import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUser
 import tech.fourge.huddleup_frontend.Utils.EventAdapter
 
 class FragmentEventPage : Fragment() {
@@ -32,6 +33,8 @@ class FragmentEventPage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val currentUser = CurrentUserUtil.currentUser
         val view = inflater.inflate(R.layout.fragment_event_page, container, false)
         createEventButton = view.findViewById(R.id.createEventButton)
         if (currentUser.role != "Manager") {
@@ -69,7 +72,7 @@ class FragmentEventPage : Fragment() {
 
     private suspend fun fetchAndDisplayEvents() {
         // Call the suspending function to fetch events
-        val teamId = currentUser.teamIds[0]
+        val teamId = CurrentUserUtil.currentUser.teamIds[0]
         val events = eventHelper.getEventsByTeamId(teamId)
         Log.d("FragmentEventPage", "Events: $events")
 

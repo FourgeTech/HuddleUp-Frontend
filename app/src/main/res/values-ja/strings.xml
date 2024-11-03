@@ -13,6 +13,7 @@
         <item>ダーク</item>
     </string-array>
     <string name="huddleup">ハドルアップ</string>
+    <string name="fetching_squad">フェッチチーム...</string>
     <string name="motto">チーム成功のための作戦</string>
     <string name="login">ログイン</string>
     <string name="create_account">アカウント作成</string>

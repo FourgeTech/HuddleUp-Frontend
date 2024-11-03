@@ -70,10 +70,11 @@ class HomePage : Fragment() {
         Log.d("HomePage", currentUser.toString())
         val teamId = currentUser.teamIds[0]
         val announcements = announcementHelper.getAnnouncementsByTeamId(teamId)
+        val sortedAnnouncements = announcements?.sortedByDescending { it.createdAt }
 
         // Update the UI on the main thread
         withContext(Dispatchers.Main) {
-            announcements?.let {
+            sortedAnnouncements?.let {
                 setupRecyclerView(it)
             }
         }

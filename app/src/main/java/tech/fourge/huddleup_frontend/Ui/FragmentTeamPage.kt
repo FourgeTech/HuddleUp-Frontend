@@ -150,6 +150,7 @@ class FragmentTeamPage : Fragment() {
             }
         } else {
             saveButton.visibility = View.GONE
+            clearButton.visibility = View.GONE
         }
 
         // Load any previously assigned players into the view

@@ -32,6 +32,7 @@ class AnnouncementHelper {
             announcementsData?.map { announcementMap ->
                 AnnouncementModel.fromMap(announcementMap)
             }
+
         } catch (e: FirebaseFunctionsException) {
             Log.e(TAG, "FirebaseFunctionsException in getAnnouncementsByTeamId: ${e.message}", e)
             null

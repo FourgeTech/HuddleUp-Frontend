@@ -15,7 +15,7 @@ class EventHelper {
     init {
         // Use the emulator for local development (comment out for production)
 //        functions.useEmulator("10.0.2.2", 5001)
-        Log.d(TAG, auth.currentUser?.uid.toString())
+        Log.d("CHEESE", auth.currentUser?.uid.toString())
     }
 
     suspend fun getEventsByTeamId(teamId: String): List<EventModel>? {
@@ -23,7 +23,7 @@ class EventHelper {
             val data = mapOf("teamId" to teamId)
             val result = functions.getHttpsCallable("getEventsByTeamId").call(data).await()
 
-            Log.d(TAG, result.data.toString())
+            Log.d("HAM", result.data.toString())
             val resultData = result.data as? Map<*, *>
             val eventsData = resultData?.get("events") as? List<Map<String, Any?>>
             Log.d(TAG, "Events data: $eventsData")
