@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Label for the team name input -->
+    <TextView
+        android:id="@+id/labelTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/team_name_label"
+        android:fontFamily="@font/poppins"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- EditText for team name -->
+    <EditText
+        android:id="@+id/editTextTeamName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:hint="@string/team_name_hint"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
+        android:inputType="textPersonName"/>
+
+    <!-- Label for the chat type spinner -->
+    <TextView
+        android:id="@+id/labelChatType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_type_label"
+        android:fontFamily="@font/poppins"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Spinner for selecting chat type -->
+    <Spinner
+        android:id="@+id/spinnerChatType"
+        android:layout_width="match_parent"
+        android:fontFamily="@font/poppins"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/labelTeamDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/team_description_label"
+        android:fontFamily="@font/poppins"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- EditText for team name -->
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/team_description_hint"
+        android:paddingStart="10dp"
+        android:background="@drawable/input_box_vector"
+        android:fontFamily="@font/poppins"
+        android:textSize="16sp"
+        android:inputType="textPersonName"/>
+
+</LinearLayout>
