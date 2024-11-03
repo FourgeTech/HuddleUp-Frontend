@@ -120,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                    Toast.makeText(applicationContext, "Authentication succeeded!", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "Authentication succeeded!", Toast.LENGTH_SHORT).show()
                     authenticateWithFirebase()
                 }
 

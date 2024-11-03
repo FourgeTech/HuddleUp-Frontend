@@ -106,7 +106,7 @@
     <string name="continue_with_google_button">Continue With Google</string>
     <string name="locker_room">Locker Room</string>
     <string name="team">Team</string>
-    <string name="attendance_schedule">Attendance Schedule</string>
+    <string name="attendance_schedule">Events</string>
     <string name="chat">Chat</string>
     <string name="profile">Profile</string>
     <string name="create_event_title">Create Event</string>
