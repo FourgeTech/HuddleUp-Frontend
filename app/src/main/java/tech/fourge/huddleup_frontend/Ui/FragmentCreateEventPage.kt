@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import tech.fourge.huddleup_frontend.Helpers.EventHelper
 import tech.fourge.huddleup_frontend.Models.EventModel
 import tech.fourge.huddleup_frontend.R
-import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
+import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil.Companion.currentUser
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,7 +29,6 @@ class FragmentCreateEventPage : Fragment() {
     private lateinit var editTextLocation: EditText
     private lateinit var buttonCreateEvent: Button
     private val eventHelper = EventHelper() // Initialize your helper class
-    private val currentUser = CurrentUserUtil.currentUser // Get the current user from CurrentUserUtil
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

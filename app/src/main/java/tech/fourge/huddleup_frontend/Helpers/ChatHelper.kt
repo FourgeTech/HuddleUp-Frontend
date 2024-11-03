@@ -4,16 +4,20 @@ import android.util.Log
 import com.google.firebase.Firebase
 import com.google.firebase.functions.functions
 import kotlinx.coroutines.tasks.await
+import tech.fourge.huddleup_frontend.Helpers.UserHelper.Companion
 import tech.fourge.huddleup_frontend.Models.ChatGroupModel
 import tech.fourge.huddleup_frontend.Models.Message
+import tech.fourge.huddleup_frontend.Utils.FirebaseUtil
 
 class ChatHelper {
-    private val functions = Firebase.functions
+    private val auth = FirebaseUtil.auth
+    private val functions = FirebaseUtil.functions
 
     // On Class Creation
     init {
-        // Use the emulator for local development (comment out for production)
+//         Use the emulator for local development (comment out for production)
 //        functions.useEmulator("10.0.2.2", 5001)
+        Log.d(TAG, auth.currentUser.toString())
     }
 
     // Function to update settings

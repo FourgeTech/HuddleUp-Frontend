@@ -4,17 +4,21 @@ import android.util.Log
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
 import kotlinx.coroutines.tasks.await
+import tech.fourge.huddleup_frontend.Helpers.UserHelper.Companion
 import tech.fourge.huddleup_frontend.Models.AnnouncementModel
+import tech.fourge.huddleup_frontend.Utils.FirebaseUtil
 
 class AnnouncementHelper {
 
     // Firebase Functions instance
-    private val functions = FirebaseFunctions.getInstance()
+    private val auth = FirebaseUtil.auth
+    private val functions = FirebaseUtil.functions
 
     init {
         // Use the emulator for local development (comment out for production)
 //       functions.useEmulator("10.0.2.2", 5001)
 //        functions.useEmulator("10.0.2.2", 5001)
+        Log.d(TAG, auth.currentUser.toString())
     }
 
     // Get announcements by teamId

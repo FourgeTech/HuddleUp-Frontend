@@ -2,33 +2,31 @@ package tech.fourge.huddleup_frontend.Helpers
 
 import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
-import com.google.firebase.functions.functions
-import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
+import tech.fourge.huddleup_frontend.Helpers.TeamHelper.Companion
 import tech.fourge.huddleup_frontend.Models.Settings
 import tech.fourge.huddleup_frontend.Models.UserModel
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
+import tech.fourge.huddleup_frontend.Utils.FirebaseUtil
 
 
 class UserHelper {
     // Firebase Auth and Functions instances
-    private val auth: FirebaseAuth = Firebase.auth
-    private val functions = Firebase.functions
+    private val auth = FirebaseUtil.auth
+    private val functions = FirebaseUtil.functions
 
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
 //       functions.useEmulator("10.0.2.2", 5001)
 //       auth.useEmulator("10.0.2.2", 9099)
-        auth.signOut()
+//        auth.signOut()
+        Log.d(TAG, auth.currentUser.toString())
     }
 
     // Sign up a new user with email and password

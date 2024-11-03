@@ -10,17 +10,19 @@ import kotlinx.coroutines.tasks.await
 import tech.fourge.huddleup_frontend.Models.Team
 import tech.fourge.huddleup_frontend.Models.UserModel
 import tech.fourge.huddleup_frontend.Utils.CurrentUserUtil
+import tech.fourge.huddleup_frontend.Utils.FirebaseUtil
 
 class TeamHelper {
-    private val auth: FirebaseAuth = Firebase.auth
-    private val functions = Firebase.functions
+    private val auth = FirebaseUtil.auth
+    private val functions = FirebaseUtil.functions
 
     // On Class Creation
     init {
         // Use the emulator for local development (comment out for production)
 //       functions.useEmulator("10.0.2.2", 5001)
-//        functions.useEmulator("10.0.2.2", 5001)
-        auth.useEmulator("10.0.2.2", 9099)
+////        functions.useEmulator("10.0.2.2", 5001)
+//        auth.useEmulator("10.0.2.2", 9099)
+        Log.d(TAG, auth.currentUser.toString())
     }
 
     // Register a new team
